@@ -1,0 +1,2990 @@
+<!DOCTYPE html>
+<html lang="ru" style="--tg-viewport-height: 100vh; --tg-viewport-stable-height: 100vh;" class=" idc0_343 yxsozvbxf"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="preconnect" href="https://cdn.tailwindcss.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net/">
+<link rel="preconnect" href="https://telegram.org/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>VOXY</title>
+
+  <script src="https://telegram.org/js/telegram-web-app.js?64"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #ff3030;
+      --red2: #d91f1f;
+      --soft: #fff1f1;
+      --green: #18b957;
+      --greenSoft: #e8fff1;
+      --blue: #147cff;
+      --text: #171717;
+      --muted: #969696;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin: 0; min-height: 100%; }
+
+    :root {
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    body {
+      padding-bottom: calc(78px + var(--safe-bottom));
+    }
+
+    .bottom-nav {
+      bottom: 0;
+      padding-bottom: calc(10px + var(--safe-bottom));
+      min-height: calc(68px + var(--safe-bottom));
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #f2f2f6;
+      overflow-x: hidden;
+    }
+    button, input, textarea { font-family: inherit; }
+    button { border: 0; cursor: pointer; }
+    button:disabled { opacity: .65; cursor: not-allowed; }
+
+    main#appRoot ~ main#appRoot,
+    nav.bottom-nav ~ nav.bottom-nav,
+    #loadingOverlay ~ #loadingOverlay,
+    #successModal ~ #successModal {
+      display: none !important;
+      pointer-events: none !important;
+    }
+
+    #appRoot {
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 18px 16px 104px;
+      background:
+        radial-gradient(circle at top right, rgba(255,48,48,.14), transparent 34%),
+        linear-gradient(180deg, #fff 0%, #fff8f8 58%, #fff 100%);
+    }
+    #appRoot.top-theme { background: #f4f4f8; }
+
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeUp .22s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 28px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .logo {
+      width: 42px; height: 42px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 650; font-size: 18px;
+      background: linear-gradient(135deg, var(--red), #ff5c5c);
+      box-shadow: 0 14px 28px rgba(255,48,48,.24);
+      flex: 0 0 auto;
+    }
+    .brand-title { font-size: 22px; font-weight: 650; letter-spacing: -.05em; line-height: 1; }
+    .brand-subtitle { margin-top: 5px; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .balance-pill {
+      min-width: 88px; padding: 12px 18px; border-radius: 999px;
+      text-align: center; color: var(--green); background: #ecfff3; border: 1px solid #d5f5df;
+      font-size: 18px; font-weight: 650; white-space: nowrap;
+    }
+
+    .center { text-align: center; }
+    .caption { margin-bottom: 12px; color: var(--muted); font-size: 13px; font-weight: 680; }
+    .intro-copy { max-width: 350px; margin: 0 auto; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .hero-wrap { position: relative; display: inline-block; padding: 0 38px; margin-bottom: 18px; }
+    .hero-title { margin: 0; font-size: 37px; line-height: .98; font-weight: 650; letter-spacing: -.075em; }
+    .emoji-left, .emoji-right { position: absolute; top: 4px; font-size: 34px; line-height: 1; }
+    .emoji-left { left: -4px; transform: rotate(-8deg); }
+    .emoji-right { right: -4px; transform: rotate(5deg); }
+
+    .card {
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(255,48,48,.08);
+      box-shadow: 0 18px 46px rgba(35,35,35,.08);
+      backdrop-filter: blur(14px);
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,48,48,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,48,48,.055) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0 22px; }
+    .stat { min-height: 96px; padding: 14px; border-radius: 24px; display: flex; flex-direction: column; justify-content: space-between; }
+    .stat strong { font-size: 24px; font-weight: 650; letter-spacing: -.06em; }
+    .stat span { color: var(--muted); font-size: 11px; line-height: 1.2; font-weight: 680; }
+
+    .section-card { border-radius: 32px; padding: 18px; margin-bottom: 16px; }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+    .section-title { margin: 0; font-size: 23px; line-height: 1.12; font-weight: 650; letter-spacing: -.06em; }
+
+
+    .task-title-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .task-mini-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      box-shadow: inset 0 0 0 1px rgba(255,48,48,.10);
+      font-size: 19px;
+      flex: 0 0 auto;
+    }
+
+    .task-mini-logo.flowers {
+      background: linear-gradient(135deg, #fff1f1, #ffe3f3);
+    }
+
+    .task-mini-logo.restaurant {
+      background: linear-gradient(135deg, #fff6e6, #ffe3cf);
+    }
+
+    .task-mini-logo.balloons {
+      background: linear-gradient(135deg, #eef7ff, #ffe8f4);
+    }
+
+    .char-counter {
+      margin-top: 8px;
+      color: rgba(23, 23, 23, .42);
+      font-size: 12px;
+      font-weight: 650;
+      line-height: 1.35;
+      text-align: left;
+      min-height: 18px;
+    }
+
+    .char-counter.good {
+      color: rgba(24, 185, 87, .78);
+    }
+
+    .task-list { display: flex; flex-direction: column; gap: 12px; }
+    .task-card {
+      width: 100%; padding: 16px; border-radius: 24px;
+      background: #fff; border: 1px solid #f1f1f1;
+      box-shadow: 0 4px 14px rgba(0,0,0,.025);
+      text-align: left; transition: .15s;
+    }
+    .task-card:active { transform: scale(.985); }
+    .task-card.selected { border-color: rgba(255,48,48,.46); box-shadow: 0 0 0 3px rgba(255,48,48,.08); }
+    .task-card.done { background: #f8fff9; border-color: rgba(24,185,87,.25); opacity: .9; }
+    .task-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .task-name { font-size: 16px; font-weight: 650; letter-spacing: -.035em; }
+    .task-meta { margin-top: 5px; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .task-price { color: var(--red); font-size: 20px; font-weight: 650; white-space: nowrap; }
+    .done-badge {
+      display: inline-flex; margin-top: 8px; padding: 5px 10px; border-radius: 999px;
+      color: var(--green); background: var(--greenSoft); border: 1px solid #cef4dc;
+      font-size: 11px; font-weight: 650;
+    }
+    .intro-task-details {
+      display: none; margin-top: 16px; padding-top: 16px;
+      border-top: 1px solid #f1e4e4; animation: fadeUp .18s ease both;
+    }
+    .task-card.expanded .intro-task-details { display: block; }
+    .intro-task-details h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.1; font-weight: 650; letter-spacing: -.055em; }
+    .intro-task-details p { margin: 0 0 16px; color: #777; font-size: 13px; line-height: 1.55; }
+
+    .big-date { margin-bottom: 14px; padding: 20px 12px; border-radius: 24px; text-align: center; background: rgba(245,245,245,.92); border: 1px solid #fff; }
+    .big-date div:first-child { font-size: 29px; line-height: 1.15; font-weight: 500; letter-spacing: -.045em; }
+    .big-date div:last-child { margin-top: 3px; color: #666; font-size: 25px; line-height: 1.15; font-weight: 500; letter-spacing: -.045em; }
+    .selected-box { min-height: 220px; margin-top: 14px; padding: 18px; border-radius: 26px; background: rgba(245,245,245,.92); border: 1px solid #fff; }
+    .selected-box h2 { margin: 0 0 8px; font-size: 25px; line-height: 1.1; font-weight: 650; letter-spacing: -.055em; }
+    .selected-box p { margin: 0; color: #777; font-size: 13px; line-height: 1.55; }
+    .amount-row { margin-top: 18px; padding: 14px; border-radius: 22px; background: #fff; border: 1px solid #f1f1f1; display: flex; justify-content: space-between; align-items: center; }
+    .amount-row span:first-child { color: var(--muted); font-size: 13px; font-weight: 650; }
+    .amount-row span:last-child { color: var(--red); font-size: 22px; font-weight: 650; }
+
+
+    .btn.withdraw-disabled,
+    .btn:disabled {
+      opacity: .45;
+      filter: grayscale(.2);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .btn { width: 100%; padding: 16px; border-radius: 24px; font-size: 16px; font-weight: 650; letter-spacing: -.02em; }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--red), var(--red2)); box-shadow: 0 16px 34px rgba(255,48,48,.32); }
+    .btn-outline { color: var(--red2); background: #fff; border: 1px solid rgba(255,48,48,.2); }
+    .balance-manage-btn { color: #fff; background: linear-gradient(135deg,var(--red),var(--red2)); box-shadow: 0 16px 34px rgba(255,48,48,.32); display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .balance-manage-icon { width: 28px; height: 28px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+
+    .success-done { padding: 26px 16px; text-align: center; }
+    .checkmark { width: 86px; height: 86px; margin: 0 auto 20px; border-radius: 28px; display: flex; align-items: center; justify-content: center; color: var(--green); background: var(--greenSoft); font-size: 46px; font-weight: 650; }
+
+    .execute-main { padding: 18px; border-radius: 26px; background: rgba(245,245,245,.92); border: 1px solid #fff; }
+    .execute-top { margin-bottom: 14px; padding: 16px; border-radius: 24px; background: #fff; border: 1px solid #f1f1f1; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .task-logo { width: 48px; height: 48px; border-radius: 18px; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 24px; flex: 0 0 auto; }
+    .template-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .template-btn { width: 100%; padding: 12px; border-radius: 18px; background: #fff; border: 1px solid #f1f1f1; text-align: left; color: #555; font-size: 13px; line-height: 1.45; }
+    .template-btn.active { background: #fff7f7; border-color: rgba(255,48,48,.45); }
+
+    .tap-close-hint {
+      margin-top: 8px;
+      color: rgba(23,23,23,.34);
+      font-size: 11px;
+      font-weight: 650;
+      text-align: center;
+    }
+
+
+    .template-list.manual-mode .template-btn {
+      opacity: .42;
+      filter: grayscale(.15);
+    }
+
+    .template-list.template-mode .template-btn {
+      opacity: 1;
+      filter: none;
+    }
+
+
+    #reviewText.manual-muted {
+      opacity: 1;
+      filter: grayscale(.18);
+      background: #f2f2f2;
+      color: rgba(23,23,23,.38);
+      border-color: #e6e6e6;
+    }
+
+    #reviewText.manual-muted::placeholder {
+      color: rgba(23,23,23,.26);
+    }
+
+    #reviewText.manual-active {
+      opacity: 1;
+      filter: none;
+      background: #fff;
+      color: var(--text);
+      border-color: #f1f1f1;
+    }
+
+    textarea { width: 100%; min-height: 150px; padding: 14px; border-radius: 22px; resize: none; outline: 0; border: 1px solid #f1f1f1; font-size: 14px; line-height: 1.5; }
+    .stars { display: flex; gap: 2px; margin: 8px 0; }
+    .star-btn { padding: 0 2px; background: transparent; color: #d6d6d6; font-size: 36px; line-height: 1; }
+    .star-btn.active { color: #ffcc33; }
+    .error-box { display: none; padding: 12px; border-radius: 18px; color: #b91c1c; background: #fff1f1; border: 1px solid #ffdcdc; font-size: 13px; font-weight: 650; }
+    .error-box.show { display: block; }
+
+    .profile-avatar { width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 999px; padding: 5px; background: linear-gradient(135deg,#ef4444,#ff9a9a); }
+
+    .profile-avatar-img,
+    .mini-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
+    }
+
+    .profile-avatar-inner { width: 100%; height: 100%; border-radius: 999px; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 44px; font-weight: 650; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .profile-stat { padding: 18px; border-radius: 24px; background: #fff; border: 1px solid #f1f1f1; text-align: center; }
+    .profile-stat small { display: block; margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+    .profile-stat strong { font-size: 30px; font-weight: 650; letter-spacing: -.055em; }
+    .withdraw-history { margin-top: 16px; padding: 18px; border-radius: 26px; background: #fff; border: 1px solid #f1f1f1; text-align: left; }
+    .withdraw-history-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .withdraw-history-title { font-size: 18px; font-weight: 650; letter-spacing: -.045em; }
+    .withdraw-empty { color: var(--muted); font-size: 13px; line-height: 1.45; font-weight: 600; }
+    .withdraw-history-list { display: flex; flex-direction: column; gap: 10px; }
+    .withdraw-history-item { padding: 14px; border-radius: 20px; background: #fff8f8; border: 1px solid #ffe1e1; }
+    .withdraw-history-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .withdraw-date { color: var(--muted); font-size: 12px; font-weight: 680; }
+    .withdraw-sum { color: var(--red); font-size: 20px; font-weight: 650; white-space: nowrap; }
+    .withdraw-status { display: inline-flex; margin-top: 8px; padding: 6px 10px; border-radius: 999px; background: #fff3d7; color: #b77900; font-size: 11px; font-weight: 650; }
+
+    .top-title { margin: 8px 0 28px; font-size: 38px; font-weight: 650; letter-spacing: -.065em; }
+    .leaderboard { overflow: hidden; border-radius: 28px; background: #fff; border: 1px solid #ececf1; box-shadow: 0 14px 34px rgba(0,0,0,.06); }
+    .leader-head { display: grid; grid-template-columns: 1fr auto; padding: 18px 22px; color: #93939d; border-bottom: 1px solid #ececf1; font-size: 13px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+    .leader-row { min-height: 84px; padding: 16px 18px; display: grid; grid-template-columns: 34px 54px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid #ececf1; }
+    .leader-row:last-child { border-bottom: 0; }
+    .leader-rank { color: #9aa0ad; font-size: 20px; font-weight: 650; }
+    .leader-rank.gold { color: #ff8a00; }
+    .leader-avatar { width: 48px; height: 48px; border-radius: 999px; object-fit: cover; display: block; background: #f1f2f6; border: 3px solid #fff; box-shadow: 0 8px 18px rgba(0,0,0,.12); }
+    .leader-avatar.king { border-color: #ffbf1b; box-shadow: 0 0 0 2px #fff6cc, 0 8px 18px rgba(0,0,0,.12); }
+    .leader-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 18px; font-weight: 650; letter-spacing: -.04em; }
+    .leader-balance { white-space: nowrap; font-size: 18px; font-weight: 650; letter-spacing: -.04em; }
+    .user-row { background: #f4f9ff; grid-template-columns: 70px 54px 1fr auto; padding-left: 16px; padding-right: 16px; }
+    .user-label { color: #999; font-size: 20px; font-weight: 650; letter-spacing: -.06em; min-width: 62px; text-align: left; }
+    .mini-avatar { width: 46px; height: 46px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 650; background: linear-gradient(135deg,#ff6464,#ffd1d1); overflow:hidden; }
+    .user-name, .user-balance { color: var(--blue); font-size: 18px; font-weight: 650; }
+
+    .withdraw-icon { width: 72px; height: 72px; border-radius: 24px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; color: var(--red); background: var(--soft); font-size: 34px; font-weight: 650; }
+    .pay-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 14px 0; }
+    .pay-method { min-height: 118px; padding: 14px 8px; border-radius: 22px; text-align: center; }
+    .pay-icon { width: 48px; height: 48px; margin: 0 auto 10px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--red); background: var(--soft); font-size: 21px; }
+    .method-dot { width: 20px; height: 20px; margin: 12px auto 0; border-radius: 999px; border: 2px solid #ddd; }
+    .pay-method.active { background: #fff3f3; border-color: rgba(255,48,48,.45); }
+    .pay-method.active .method-dot { background: var(--red); border-color: var(--red); box-shadow: inset 0 0 0 4px #fff; }
+    .input-box { display: none; margin-top: 14px; padding: 18px; border-radius: 26px; }
+    .input-box.show { display: block; }
+    .input-box label { display: block; margin-bottom: 12px; color: var(--red); font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    .withdraw-input-wrap { position: relative; min-height: 58px; border-radius: 20px; border: 1px solid #f0d6d6; background: #fff; overflow: hidden; }
+    .withdraw-input { position: absolute; inset: 0; width: 100%; height: 100%; padding: 16px; border: 0; outline: 0; background: transparent; color: transparent; caret-color: var(--red); font-size: 20px; font-weight: 680; letter-spacing: .02em; z-index: 2; }
+    .withdraw-preview { position: absolute; inset: 0; display: flex; align-items: center; padding: 16px; pointer-events: none; z-index: 1; font-size: 20px; font-weight: 680; letter-spacing: .02em; white-space: pre; overflow: hidden; }
+    .withdraw-preview-entered { color: var(--text); }
+    .withdraw-preview-missing { color: #c9c9c9; }
+    .hint { margin: 8px 0 14px; color: var(--muted); font-size: 12px; font-weight: 650; }
+
+    .bottom-nav { position: fixed; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 460px; display: flex; justify-content: space-around; padding: 10px 18px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,.94); border-top: 1px solid #eee; backdrop-filter: blur(10px); z-index: 40; }
+    .bottom-nav button { min-width: 82px; color: #8e8e93; font-size: 12px; font-weight: 680; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+    .bottom-nav button.active { color: var(--blue); }
+    .nav-icon { width: 31px; height: 31px; stroke: currentColor; stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-label { line-height: 1; }
+    .modal-layer { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(25,25,25,.38); backdrop-filter: blur(10px); z-index: 50; }
+    .modal-layer.active { display: flex; }
+    .modal-card { width: 100%; max-width: 350px; padding: 26px; border-radius: 32px; background: #fff; text-align: center; box-shadow: 0 22px 60px rgba(0,0,0,.18); }
+    .loader { width: 56px; height: 56px; margin: 0 auto 18px; border-radius: 999px; border: 6px solid rgba(255,48,48,.15); border-top-color: var(--red); animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+
+  
+    /* Нижнее меню и безопасная зона */
+    :root {
+      --phone-safe-bottom: max(18px, env(safe-area-inset-bottom, 0px));
+      --bottom-nav-height: calc(82px + var(--phone-safe-bottom));
+      --content-nav-gap: 18px;
+    }
+
+    html,
+    body {
+      background: #fff;
+    }
+
+    body {
+      padding-bottom: 0 !important;
+    }
+
+    #appRoot {
+      min-height: 100dvh;
+      padding-bottom: calc(var(--bottom-nav-height) + var(--content-nav-gap)) !important;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 460px;
+      height: var(--bottom-nav-height);
+      min-height: var(--bottom-nav-height);
+      padding: 10px 18px calc(12px + var(--phone-safe-bottom));
+      border: 0 !important;
+      border-top: 0 !important;
+      border-radius: 0;
+      background: #fff;
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      z-index: 40;
+    }
+
+    body.keyboard-open .bottom-nav {
+      display: none !important;
+    }
+
+  
+    @media (min-width:700px){
+      #appRoot,.bottom-nav{max-width:1180px!important;width:100%}
+      #appRoot{padding-left:28px;padding-right:28px}
+      .withdraw-methods{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    }
+    @media (min-width:980px){
+      #appRoot{padding-left:38px;padding-right:38px}
+    }
+
+    .payment-logos{display:flex;align-items:center;justify-content:center;gap:18px;margin:28px 0 8px;padding:12px 16px;font-weight:650}
+    .payment-logo-visa{font-size:25px;color:#1a3ea1;font-style:italic}
+    .payment-logo-mastercard{display:inline-flex;align-items:center}
+    .payment-logo-mastercard:before,.payment-logo-mastercard:after{content:'';width:25px;height:25px;border-radius:50%;display:block}
+    .payment-logo-mastercard:before{background:#eb001b;margin-right:-9px}
+    .payment-logo-mastercard:after{background:#f79e1b}
+    .payment-logo-mir{font-size:25px;color:#1f8f68}
+
+
+  
+    /* Единая типографика для всего приложения */
+    body,
+    button,
+    input,
+    textarea {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-weight: 450;
+      letter-spacing: 0;
+    }
+
+    h1, h2, h3, h4,
+    .hero-title,
+    .section-title,
+    .brand-title,
+    .task-name,
+    .profile-name,
+    .leader-name,
+    .modal-card h2,
+    .success-card h2 {
+      font-weight: 700 !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1.15;
+    }
+
+    .hero-title {
+      font-weight: 720 !important;
+      line-height: 1.08;
+    }
+
+    .task-price,
+    .balance-pill,
+    .profile-stat-value,
+    .withdraw-balance-value,
+    .withdraw-history-amount,
+    .leader-balance,
+    .user-balance,
+    .rank-number,
+    .profile-earned,
+    .profile-completed {
+      font-weight: 680 !important;
+      letter-spacing: -0.012em !important;
+      line-height: 1.1;
+    }
+
+    .btn,
+    .btn-primary,
+    .btn-outline,
+    .nav-label,
+    .done-badge,
+    .history-status,
+    .pill {
+      font-weight: 650 !important;
+      letter-spacing: -0.008em !important;
+    }
+
+    .caption,
+    .task-meta,
+    .brand-subtitle,
+    .intro-copy,
+    .withdraw-history-date,
+    .template-btn,
+    textarea,
+    input,
+    .leader-row,
+    .user-row,
+    .error-box {
+      font-weight: 480 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .template-btn {
+      line-height: 1.35;
+    }
+
+    .task-card,
+    .section-card,
+    .page-card,
+    .modal-card {
+      letter-spacing: 0;
+    }
+
+    .stars,
+    .stars button {
+      font-weight: 400 !important;
+      letter-spacing: 0 !important;
+    }
+
+    .execute-header {
+      margin-bottom: 12px;
+    }
+
+    .execute-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .execute-back-btn {
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 620 !important;
+      margin: 0;
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: clamp(30px, 10vw, 42px) !important;
+      }
+    }
+
+  
+    .intro-task-details h3,
+    #executeTaskTitle,
+    #todayTasksTitle,
+    #topScreen .leader-name,
+    #topScreen .leader-balance,
+    #profileScreen .withdraw-history-amount,
+    #profileScreen .profile-stat-value,
+    #ratingMessage,
+    #successModal .section-title {
+      font-weight: 680 !important;
+      letter-spacing: -0.012em !important;
+    }
+
+    #topScreen .leader-name,
+    #topScreen .leader-balance {
+      line-height: 1.2;
+    }
+
+    #profileScreen .withdraw-history-amount {
+      font-size: 14px;
+    }
+
+    #executeScreen .section-title {
+      font-weight: 680 !important;
+      letter-spacing: -0.015em !important;
+    }
+
+/* Реальный текст и курсор сверху, оставшаяся маска — точно под ними */
+    .withdraw-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text) !important;
+      caret-color: var(--red);
+      font-size: 20px;
+      font-weight: 580 !important;
+      line-height: normal;
+      letter-spacing: 0 !important;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+      z-index: 2;
+    }
+
+    .withdraw-preview {
+      position: absolute;
+      inset: 0;
+      display: flex !important;
+      align-items: center;
+      padding: 16px;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 20px;
+      font-weight: 580 !important;
+      line-height: normal;
+      letter-spacing: 0 !important;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+      white-space: pre;
+      overflow: hidden;
+    }
+
+    .withdraw-preview-entered {
+      visibility: hidden;
+      color: transparent;
+    }
+
+    .withdraw-preview-missing {
+      color: rgba(23,23,23,.24);
+    }
+
+  
+    /* UX-полировка v30 */
+    :root {
+      --card-radius: 24px;
+      --soft-border: #ececef;
+      --soft-shadow: 0 8px 24px rgba(23,23,23,.055);
+    }
+
+    html { font-size: 16px; }
+    body { color: #202124; }
+
+    button,
+    a,
+    input,
+    textarea {
+      min-height: 44px;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(20,124,255,.28);
+      outline-offset: 3px;
+    }
+
+    .card,
+    .section-card,
+    .page-card,
+    .modal-card {
+      border-color: var(--soft-border) !important;
+      box-shadow: var(--soft-shadow) !important;
+    }
+
+    .section-card { border-radius: var(--card-radius); }
+    .btn, .btn-outline { min-height: 48px; }
+    .btn, .task-card, .template-btn, .pay-method {
+      transition: transform .14s ease, box-shadow .18s ease, opacity .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:active, .task-card:active, .template-btn:active, .pay-method:active {
+      transform: scale(.985);
+    }
+
+    .task-list { gap: 10px; }
+    .task-card {
+      padding: 13px 14px;
+      border-radius: 19px;
+    }
+    .task-row { gap: 10px; }
+    .task-mini-logo { width: 36px; height: 36px; border-radius: 12px; }
+    .task-name { font-size: 15px; }
+    .task-price { font-size: 16px; }
+    .task-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      color: #777b82;
+      font-size: 11px;
+      font-weight: 560;
+    }
+    .task-card-footer::before { content: '◷'; font-size: 13px; }
+
+    .day-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: -2px 0 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #f7f7f9;
+      color: #686c73;
+      font-size: 12px;
+      font-weight: 620;
+    }
+    #dayRemainingText { color: var(--red); }
+
+    .intro-task-details {
+      padding-top: 12px;
+    }
+    .intro-task-details p {
+      margin: 6px 0 12px;
+      line-height: 1.45;
+      color: #676b72;
+    }
+
+    .execute-description {
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 480;
+      margin: 5px 0 18px;
+      color: #383b40;
+    }
+    .field-heading, .rating-heading, .manual-meta-row, .selected-method-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .field-title {
+      font-size: 15px;
+      font-weight: 680;
+      color: #2b2e33;
+    }
+
+    .template-list { gap: 9px; }
+    .template-btn {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 24px;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 13px 14px;
+      text-align: left;
+      border: 1px solid #e8e8ec;
+      border-radius: 17px;
+      background: #fff;
+      color: #34373c;
+    }
+    .template-radio {
+      width: 21px;
+      height: 21px;
+      border: 2px solid #cfd1d6;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: .18s ease;
+    }
+    .template-radio::after {
+      content: '';
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      transform: scale(0);
+      transition: transform .18s ease;
+    }
+    .template-btn.active {
+      border-color: rgba(255,48,48,.62);
+      background: #fff7f7;
+      box-shadow: 0 8px 20px rgba(255,48,48,.08);
+    }
+    .template-btn.active .template-radio { border-color: var(--red); }
+    .template-btn.active .template-radio::after { transform: scale(1); }
+    .template-list.manual-mode .template-btn { opacity: .42; }
+
+    .manual-entry { margin-top: 14px; }
+    .manual-entry > label { display: block; margin-bottom: 8px; }
+    #reviewText {
+      min-height: 132px;
+      line-height: 1.5;
+    }
+    .manual-meta-row {
+      align-items: flex-start;
+      margin-top: 7px;
+    }
+    .manual-mode-hint {
+      max-width: 56%;
+      color: #8a8e94;
+      font-size: 11px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .rating-section {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid #ececef;
+      border-radius: 20px;
+      background: #fff;
+    }
+    .rating-section.attention {
+      animation: errorShake .34s ease;
+      border-color: rgba(255,48,48,.55);
+      box-shadow: 0 0 0 4px rgba(255,48,48,.08);
+    }
+    .rating-heading .section-title { margin: 2px 0 0; font-size: 20px; }
+    .required-badge {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #fff0f0;
+      color: #d72d27;
+      font-size: 10px;
+      font-weight: 680;
+      white-space: nowrap;
+    }
+    .rating-copy {
+      margin: 8px 0 10px;
+      color: #74787f;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .stars { justify-content: flex-start !important; }
+    .star-btn { min-width: 43px; min-height: 43px; transition: transform .16s ease, color .16s ease; }
+    .star-btn.active { transform: translateY(-1px) scale(1.05); }
+
+    .publish-note {
+      margin: 13px 2px 10px;
+      color: #7c8087;
+      font-size: 11px;
+      line-height: 1.45;
+      text-align: center;
+    }
+    .publish-btn {
+      margin-top: 0;
+      opacity: .52;
+      box-shadow: none !important;
+    }
+    .publish-btn.is-partial { opacity: .82; }
+    .publish-btn.is-ready {
+      opacity: 1;
+      box-shadow: 0 12px 28px rgba(255,48,48,.22) !important;
+    }
+
+    .error-box.show {
+      animation: errorShake .34s ease;
+    }
+
+    .top-explainer, .ranking-footnote {
+      color: #74787f;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .top-explainer { margin: -4px 0 16px; }
+    .ranking-footnote { margin: 12px 2px 0; }
+    .leader-head { color: #81858c; font-size: 11px; }
+    .leader-row { min-height: 58px; }
+    .leader-name { font-size: 14px; font-weight: 620 !important; }
+    .leader-balance { font-size: 13px; font-weight: 620 !important; color: #565a61; }
+    .your-rank-card {
+      margin-top: 14px;
+      padding: 12px 14px 5px;
+      border: 1px solid rgba(20,124,255,.20);
+      border-radius: 22px;
+      background: linear-gradient(135deg,#fff,#f5f9ff);
+      box-shadow: 0 8px 24px rgba(20,124,255,.06);
+    }
+    .your-rank-caption {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 680;
+      margin-bottom: 2px;
+    }
+    .your-rank-card .user-row { border: 0; background: transparent; padding-left: 0; padding-right: 0; }
+
+    .profile-title { margin-bottom: 18px !important; }
+    .profile-grid-three {
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 9px;
+    }
+    .profile-stat {
+      padding: 14px 8px;
+      min-width: 0;
+    }
+    .profile-stat small { font-size: 10px; line-height: 1.2; }
+    .profile-stat strong { font-size: 21px; }
+    .profile-stat.primary-stat {
+      border-color: rgba(24,185,87,.22);
+      background: #f6fff9;
+    }
+    .history-subtitle {
+      margin-top: 3px;
+      color: #8a8e94;
+      font-size: 11px;
+    }
+    .withdraw-history-item {
+      cursor: pointer;
+    }
+    .withdraw-history-item:hover { border-color: rgba(20,124,255,.22); }
+    .withdraw-method-line {
+      margin-top: 4px;
+      color: #72767d;
+      font-size: 11px;
+    }
+    .withdraw-status.status-processing { color: #9a6700; background: #fff3cd; }
+    .withdraw-status.status-done { color: #15803d; background: #dcfce7; }
+    .withdraw-status.status-error { color: #d92d20; background: #ffe7e7; }
+
+    .flow-back-btn {
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 620 !important;
+    }
+    .withdraw-caption { margin-top: 12px; }
+    .withdraw-balance-value {
+      font-size: 38px;
+      font-weight: 680 !important;
+      letter-spacing: -.035em !important;
+    }
+    .selected-method-row {
+      padding-bottom: 11px;
+      margin-bottom: 11px;
+      border-bottom: 1px solid #eeeef1;
+      color: #777b82;
+      font-size: 12px;
+    }
+    .selected-method-row strong { color: #25282d; font-size: 13px; }
+    .payment-support {
+      margin: 22px 0 2px;
+      text-align: center;
+    }
+    .payment-support-title {
+      color: #8a8e94;
+      font-size: 10px;
+      font-weight: 560;
+    }
+    .payment-support .payment-logos {
+      margin: 8px 0 0;
+      opacity: .68;
+      transform: scale(.84);
+      transform-origin: center top;
+    }
+
+    .withdraw-confirm-state { min-height: 70vh; }
+    .confirmation-card { max-width: 540px; margin: 30px auto 0; text-align: center; }
+    .confirmation-icon, .details-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: #eefbf3;
+      color: #15944a;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .confirmation-copy { margin: 8px auto 18px; }
+    .confirmation-list, .details-list {
+      border: 1px solid #ececef;
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: left;
+    }
+    .confirmation-list > div, .details-list > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 13px 14px;
+      border-bottom: 1px solid #ececef;
+    }
+    .confirmation-list > div:last-child, .details-list > div:last-child { border-bottom: 0; }
+    .confirmation-list span, .details-list span { color: #7a7e85; font-size: 12px; }
+    .confirmation-list strong, .details-list strong { font-size: 13px; text-align: right; }
+    .confirmation-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .transaction-state {
+      min-height: calc(100vh - 64px);
+      align-items: center;
+      justify-content: center;
+    }
+    .transaction-caption { color: var(--red); margin-top: 12px; }
+
+
+    .success-screen-wrap {
+      min-height: calc(100vh - 110px);
+      display: flex;
+      align-items: center;
+    }
+    .success-card { width: 100%; max-width: 560px; margin: 0 auto; }
+    .success-checkmark { animation: successPop .48s cubic-bezier(.2,.8,.2,1) both; }
+    .success-title { font-size: 31px !important; }
+    .success-copy { margin: 12px auto 20px; }
+
+    .details-modal-card { position: relative; max-width: 390px; }
+    .modal-close {
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      border-radius: 50%;
+      background: #f3f3f5;
+      color: #575b62;
+      font-size: 25px;
+    }
+    .details-note {
+      color: #7b7f86;
+      font-size: 11px;
+      line-height: 1.45;
+      margin: 12px 0 16px;
+    }
+
+    .balance-updated { animation: balancePulse .55s ease; }
+
+    @keyframes errorShake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    @keyframes successPop {
+      0% { opacity: 0; transform: scale(.7); }
+      70% { transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes balancePulse {
+      0%,100% { transform: scale(1); }
+      45% { transform: scale(1.08); color: var(--green); }
+    }
+
+    @media (max-width: 430px) {
+      .profile-grid-three { grid-template-columns: 1fr 1fr; }
+      .profile-grid-three .profile-stat:first-child { grid-column: 1 / -1; }
+      .confirmation-actions { grid-template-columns: 1fr; }
+      .manual-meta-row { display: block; }
+      .manual-mode-hint { max-width: none; margin-top: 4px; text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  
+    .input-box.attention,
+    textarea.attention {
+      animation: errorShake .34s ease;
+      border-color: rgba(255,48,48,.55) !important;
+      box-shadow: 0 0 0 4px rgba(255,48,48,.08) !important;
+    }
+
+  
+    .withdraw-history-item {
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+    }
+    .withdraw-sum { font-size: 16px !important; font-weight: 680 !important; }
+    .balance-pill { font-size: 13px; }
+    .profile-stat strong { white-space: nowrap; }
+
+  
+    .task-name, .leader-name, .user-name, .template-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+  
+    /* Точечная полировка шапок и отступов */
+    .brand > div:last-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand-title {
+      line-height: .98;
+    }
+
+    .brand-subtitle {
+      margin-top: 1px !important;
+      line-height: 1.05;
+    }
+
+    .field-heading {
+      margin-bottom: 8px;
+    }
+
+    .details-modal-card #withdrawDetailsTitle {
+      margin: 0 44px 16px;
+    }
+
+    .details-modal-card .details-list {
+      margin-top: 0;
+    }
+
+    /* История начислений в профиле (оформление взято у блока истории вывода) */
+    .accrual-item { cursor: default; background: #f6fff9; border-color: #d5f5df; }
+    .accrual-item:hover { border-color: #d5f5df; }
+    .accrual-task { color: #25282d; font-size: 14px; font-weight: 620; line-height: 1.3; }
+    .accrual-item .withdraw-date { margin-top: 4px; font-weight: 560; }
+    .accrual-sum { color: var(--green); }
+
+  </style>
+</head>
+<body>
+  <main id="appRoot" class="">
+    <section id="introScreen" class="screen active">
+      <header class="header">
+        <div class="brand">
+          <div class="logo">V</div>
+          <div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div>
+        </div>
+        <div class="balance-pill">₽ <span class="balanceAmount">0</span></div>
+      </header>
+
+      <div class="center">
+        <div class="hero-wrap"><div class="emoji-left">✍️</div><h1 class="hero-title">Пиши отзывы.<br>Получай рубли.</h1><div class="emoji-right">💵</div></div>
+        <p class="intro-copy">В сервисе представлены задачи от разных компаний, которым нужна честная обратная связь по товарам, услугам и клиентскому опыту.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat card"><strong>7482</strong><span>участников</span></div>
+        <div class="stat card"><strong>от 300₽</strong><span>за отзыв</span></div>
+        <div class="stat card"><strong>3</strong><span>задания сейчас</span></div>
+      </div>
+
+      <section class="section-card card grid-bg">
+        <div id="introTasksPanel">
+          <div class="section-head"><div><h2 id="todayTasksTitle" class="section-title">Задания на 08.10.26</h2></div></div>
+          <div class="day-status" aria-live="polite">
+            <span id="dayProgressText">Выполнено 0 из 3</span>
+            <span id="dayRemainingText">Осталось 3</span>
+          </div>
+          <div id="introTasksList" class="task-list"><div class="task-card" role="button" tabindex="0" aria-label="Отзыв о цветочном магазине, начисление 330 рублей, доступно до 23:59"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo flowers">🌸</span><div class="task-name">Отзыв о цветочном магазине</div></div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+330 ₽</div></div><div class="intro-task-details"><div class="caption">Условия задания</div><h3>Отзыв о цветочном магазине</h3><p>Короткий положительный отзыв о свежести цветов и работе сотрудников.</p><button class="btn btn-primary intro-start-task" type="button">Начать выполнение</button></div></div><div class="task-card" role="button" tabindex="0" aria-label="Отзыв о ресторане, начисление 420 рублей, доступно до 23:59"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo restaurant">🍽️</span><div class="task-name">Отзыв о ресторане</div></div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+420 ₽</div></div><div class="intro-task-details"><div class="caption">Условия задания</div><h3>Отзыв о ресторане</h3><p>Короткий положительный отзыв о кухне, чистоте зала и обслуживании.</p><button class="btn btn-primary intro-start-task" type="button">Начать выполнение</button></div></div><div class="task-card" role="button" tabindex="0" aria-label="Отзыв о магазине шаров, начисление 390 рублей, доступно до 23:59"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo balloons">🎈</span><div class="task-name">Отзыв о магазине шаров</div></div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+390 ₽</div></div><div class="intro-task-details"><div class="caption">Условия задания</div><h3>Отзыв о магазине шаров</h3><p>Короткий положительный отзыв о выборе шаров, оформлении и помощи сотрудников.</p><button class="btn btn-primary intro-start-task" type="button">Начать выполнение</button></div></div></div>
+        </div>
+
+        <div id="introAllDonePanel" class="success-done" style="display:none">
+          <div class="checkmark">✓</div>
+          <h2 class="section-title" style="font-size:28px;margin-bottom:12px">Все задания на сегодня выполнены</h2>
+          <p class="intro-copy" style="margin:0 auto 22px">Начисления добавлены на баланс. Теперь доступен переход в профиль для продолжения.</p>
+          <button id="introWithdrawBtn" class="btn btn-primary withdraw-disabled" type="button" disabled="disabled" aria-disabled="true">Начать зарабатывать</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="tasksScreen" class="screen">
+      <header class="header">
+        <div class="brand">
+          <div class="logo">V</div>
+          <div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div>
+        </div>
+        <div class="balance-pill">₽ <span class="balanceAmount">0</span></div>
+      </header>
+
+      <section id="taskSelectionPanel" class="section-card card grid-bg">
+        <div class="big-date"><div>Выбрать задание</div><div id="currentDate">8 октября</div></div>
+        <div id="tasksList" class="task-list"><button type="button" class="task-card" aria-label="Отзыв о цветочном магазине, начисление 330 рублей"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo flowers">🌸</span><div class="task-name">Отзыв о цветочном магазине</div></div><div class="task-meta">Отзыв от 20 символов</div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+330 ₽</div></div></button><button type="button" class="task-card" aria-label="Отзыв о ресторане, начисление 420 рублей"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo restaurant">🍽️</span><div class="task-name">Отзыв о ресторане</div></div><div class="task-meta">Отзыв от 25 символов</div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+420 ₽</div></div></button><button type="button" class="task-card" aria-label="Отзыв о магазине шаров, начисление 390 рублей"><div class="task-row"><div><div class="task-title-line"><span class="task-mini-logo balloons">🎈</span><div class="task-name">Отзыв о магазине шаров</div></div><div class="task-meta">Отзыв от 40 символов</div><div class="task-card-footer">до 23:59</div><div class="badge-place"></div></div><div class="task-price">+390 ₽</div></div></button></div>
+        <div class="selected-box">
+          <div class="caption">Выбранное задание</div>
+          <h2 id="selectedTaskTitle">Выберите задачу выше</h2>
+          <p id="selectedTaskText">После выбора здесь появится краткая инструкция.</p>
+          <div class="amount-row"><span>Начисление</span><span id="selectedTaskPrice">—</span></div>
+        </div>
+      </section>
+
+      <section id="allDonePanel" class="success-done card" style="display:none">
+        <div class="checkmark">✓</div>
+        <h2 class="section-title">Все задания на сегодня выполнены</h2>
+        <p class="intro-copy" style="margin:12px auto 20px">Начисления добавлены на баланс. Теперь доступен переход в профиль для продолжения.</p>
+        <button id="withdrawAvailableBtn" class="btn btn-primary withdraw-disabled" type="button" disabled="disabled" aria-disabled="true">Начать зарабатывать</button>
+      </section>
+
+      <button id="continueTaskBtn" class="btn btn-primary" type="button">Начать выполнение</button>
+    </section>
+
+    <section id="executeScreen" class="screen">
+      <header class="header execute-header">
+        <div class="brand">
+          <div class="logo">V</div>
+          <div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div>
+        </div>
+      </header>
+
+      <div class="execute-controls-row">
+        <button id="executeBackBtn" class="btn-outline execute-back-btn" type="button">← Назад</button>
+        <div class="balance-pill">₽ <span class="balanceAmount">0</span></div>
+      </div>
+
+      <section class="section-card card grid-bg">
+        <div class="execute-top">
+          <div class="brand"><div id="executeLogo" class="task-logo">🌸</div><div><div id="executeTaskTitle" class="task-name">Задание</div><div id="executeTaskMeta" class="task-meta">Описание</div></div></div>
+          <div id="executeTaskPrice" class="task-price">+0₽</div>
+        </div>
+
+        <div class="execute-main">
+          <div class="caption">Условия задания</div>
+          <p id="executeTaskDescription" class="execute-description">Описание задания</p>
+
+          <div class="field-heading">
+            <div class="field-title">Выберите один шаблон</div>
+          </div>
+          <div id="templatesList" class="template-list" role="radiogroup" aria-label="Шаблоны отзывов"></div>
+
+          <div class="manual-entry">
+            <label class="field-title" for="reviewText">Или напишите свой отзыв</label>
+            <textarea id="reviewText" aria-describedby="reviewCounter manualModeHint" placeholder="Свой отзыв..."></textarea>
+            <div class="manual-meta-row">
+              <div id="reviewCounter" class="char-counter" aria-live="polite">Осталось: 0 символов.</div>
+              <div id="manualModeHint" class="manual-mode-hint">Можно выбрать шаблон или написать свой отзыв</div>
+            </div>
+          </div>
+
+          <section id="ratingSection" class="rating-section" aria-labelledby="ratingTitle">
+            <div class="rating-heading">
+              <div>
+                <div class="caption">Оценка</div>
+                <h2 id="ratingTitle" class="section-title">Выберите 5 звёзд</h2>
+              </div>
+              <span class="required-badge">Обязательно</span>
+            </div>
+            <p class="rating-copy">Для выполнения задания необходимо поставить максимальную оценку.</p>
+            <div id="starsRow" class="stars" role="radiogroup" aria-label="Оценка от одной до пяти звёзд"><button type="button" class="star-btn" data-star="1" role="radio" aria-label="1 звезда" aria-checked="false">★</button><button type="button" class="star-btn" data-star="2" role="radio" aria-label="2 звёзд" aria-checked="false">★</button><button type="button" class="star-btn" data-star="3" role="radio" aria-label="3 звёзд" aria-checked="false">★</button><button type="button" class="star-btn" data-star="4" role="radio" aria-label="4 звёзд" aria-checked="false">★</button><button type="button" class="star-btn" data-star="5" role="radio" aria-label="5 звёзд" aria-checked="false">★</button></div>
+          </section>
+
+          <div id="ratingMessage" class="error-box" role="alert" aria-live="assertive">Выберите шаблон или напишите отзыв.</div>
+          <div class="publish-note">Отзыв опубликуется в Яндекс Картах. Проверьте текст и оценку перед публикацией.</div>
+          <button id="publishBtn" class="btn btn-primary publish-btn is-idle" type="button" aria-disabled="true">Опубликовать</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="topScreen" class="screen">
+      <header class="header">
+        <div class="brand"><div class="logo">V</div><div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div></div>
+        <div class="balance-pill">₽ <span class="balanceAmount">0</span></div>
+      </header>
+
+      <h1 class="top-title">Рейтинг</h1>
+      <p class="top-explainer">Рейтинг формируется по общей сумме начислений за всё время.</p>
+
+      <section class="leaderboard">
+        <div class="leader-head"><span>Участник</span><span>За всё время</span></div>
+        <div id="topLeaders"><div class="leader-row"><div class="leader-rank gold">1</div><img class="leader-avatar king" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23111827%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234b5563%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%98%8E%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">Rappthbx</div><div class="leader-balance">28 940 ₽</div></div><div class="leader-row"><div class="leader-rank">2</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237c2d12%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23fb923c%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%A7%A2%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">krezx1</div><div class="leader-balance">26 780 ₽</div></div><div class="leader-row"><div class="leader-rank" style="color:#ffae48">3</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%231e1b4b%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23818cf8%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%8E%A7%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">milotonina</div><div class="leader-balance">24 560 ₽</div></div><div class="leader-row"><div class="leader-rank">4</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233b0764%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23e879f9%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%98%88%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">rogov12_45</div><div class="leader-balance">22 410 ₽</div></div><div class="leader-row"><div class="leader-rank">5</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23064e3b%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2334d399%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%90%B8%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">Спайпер</div><div class="leader-balance">20 980 ₽</div></div><div class="leader-row"><div class="leader-rank">6</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237f1d1d%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f87171%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%94%A5%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">Сашикссс 🍓</div><div class="leader-balance">18 640 ₽</div></div><div class="leader-row"><div class="leader-rank">7</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230f172a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2338bdf8%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%A5%B6%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">dmtrkpln</div><div class="leader-balance">16 310 ₽</div></div><div class="leader-row"><div class="leader-rank">8</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23422006%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23facc15%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%97%9D%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">Ай сберг 🥶</div><div class="leader-balance">14 760 ₽</div></div><div class="leader-row"><div class="leader-rank">9</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23581c87%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23c084fc%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%91%BE%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">Романа 🗝️</div><div class="leader-balance">12 430 ₽</div></div><div class="leader-row"><div class="leader-rank">10</div><img class="leader-avatar" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23172554%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2360a5fa%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2296%22%20height%3D%2296%22%20rx%3D%2248%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2268%22%20cy%3D%2222%22%20r%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C.22)%22%2F%3E%3Ctext%20x%3D%2248%22%20y%3D%2260%22%20text-anchor%3D%22middle%22%20font-size%3D%2238%22%3E%F0%9F%9A%80%3C%2Ftext%3E%3C%2Fsvg%3E" alt=""><div class="leader-name">bogdanrwqax</div><div class="leader-balance">10 120 ₽</div></div></div>
+      </section>
+
+      <section class="your-rank-card">
+        <div class="your-rank-caption">Ваша позиция</div>
+        <div class="leader-row user-row">
+          <div id="userTopRank" class="user-label">7182</div>
+          <div class="mini-avatar">V</div>
+          <div class="user-name">Пользователь</div>
+          <div class="user-balance"><span class="balanceAmount">0</span> ₽</div>
+        </div>
+      </section>
+
+      <p class="ranking-footnote">Позиция растёт после каждого выполненного задания.</p>
+    </section>
+
+    <section id="profileScreen" class="screen">
+      <header class="header">
+        <div class="brand"><div class="logo">V</div><div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div></div>
+        <div class="balance-pill">₽ <span id="profileTopBalance" class="balanceAmount">0</span></div>
+      </header>
+
+      <section class="section-card card profile-card">
+        <h1 class="hero-title profile-title">Профиль</h1>
+        <div class="center">
+          <div class="profile-avatar"><div class="profile-avatar-inner">V</div></div>
+          <div id="profileName" class="section-title">Пользователь</div>
+          <div class="task-meta">исполнитель VOXY</div>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-stat primary-stat"><small>Баланс</small><strong><span id="profileAvailable">0</span> ₽</strong></div>
+          <div class="profile-stat"><small>Заданий</small><strong><span id="profileCompleted">0</span></strong></div>
+        </div>
+
+        <button id="balanceManageBtn" class="btn balance-manage-btn" type="button">
+          <svg class="balance-manage-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3"></rect><rect x="13" y="13" width="14" height="14" rx="3"></rect></svg>
+          <span id="balanceManageText">Начать зарабатывать</span>
+        </button>
+
+        <div class="withdraw-history">
+          <div class="withdraw-history-head">
+            <div>
+              <div class="withdraw-history-title">История начислений</div>
+            </div>
+          </div>
+          <div id="accrualHistoryEmpty" class="withdraw-empty">Начислений пока нет. Выполните задание, и здесь появится запись.</div>
+          <div id="accrualHistoryList" class="withdraw-history-list"></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="withdrawScreen" class="screen">
+      <div id="withdrawMainState">
+        <header class="header">
+          <div class="brand">
+            <div class="logo">V</div>
+            <div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div>
+          </div>
+          <button id="withdrawBackBtn" class="btn-outline flow-back-btn" type="button">← Назад</button>
+        </header>
+
+        <div class="center">
+          <div class="withdraw-icon">₽</div>
+          <h1 class="hero-title">Вывод средств</h1>
+          <div class="caption withdraw-caption">Выберите способ получения</div>
+        </div>
+
+        <div class="section-card card center balance-withdraw-card">
+          <div class="caption" style="color:var(--red)">Доступно к выводу</div>
+          <div class="withdraw-balance-value"><span id="withdrawBalance">0</span> ₽</div>
+        </div>
+
+        <div id="payMethods" class="pay-grid" aria-label="Способы получения"><button type="button" class="pay-method card" aria-pressed="false" aria-label="Выбрать способ: СБП"><div class="pay-icon" aria-hidden="true">🏦</div><div style="font-size:13px;font-weight:650">СБП</div><div class="method-dot"></div></button><button type="button" class="pay-method card" aria-pressed="false" aria-label="Выбрать способ: Карта РФ"><div class="pay-icon" aria-hidden="true">💳</div><div style="font-size:13px;font-weight:650">Карта РФ</div><div class="method-dot"></div></button><button type="button" class="pay-method card" aria-pressed="false" aria-label="Выбрать способ: Иностранная карта"><div class="pay-icon" aria-hidden="true">🌍</div><div style="font-size:13px;font-weight:650">Иностранная карта</div><div class="method-dot"></div></button></div>
+
+        <div id="withdrawForm" class="input-box card">
+          <div class="selected-method-row">
+            <span>Выбранный способ</span>
+            <strong id="selectedMethodName">Не выбран</strong>
+          </div>
+          <label id="withdrawInputLabel" for="withdrawInput">Реквизиты</label>
+          <div class="withdraw-input-wrap">
+            <div id="withdrawPreview" class="withdraw-preview" aria-hidden="true"><span class="withdraw-preview-missing">0000 0000 0000 0000</span></div>
+            <input id="withdrawInput" class="withdraw-input" inputmode="numeric" autocomplete="off" placeholder="" aria-describedby="withdrawInputHint">
+          </div>
+          <div id="withdrawInputHint" class="hint" aria-live="polite">Введите только цифры.</div>
+          <button id="confirmWithdrawBtn" class="btn btn-primary" type="button">Проверить данные</button>
+        </div>
+
+        <div class="payment-support">
+          <div class="payment-support-title">Поддерживаемые способы получения</div>
+          <div class="payment-logos" aria-label="Visa, Mastercard и Мир">
+            <span class="payment-logo-visa">VISA</span>
+            <span class="payment-logo-mastercard" aria-label="Mastercard"></span>
+            <span class="payment-logo-mir">МИР</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="withdrawConfirmState" class="withdraw-confirm-state" style="display:none">
+        <header class="header">
+          <div class="brand">
+            <div class="logo">V</div>
+            <div><div class="brand-title">VOXY</div><div class="brand-subtitle">платформа заданий</div></div>
+          </div>
+          <button id="confirmBackBtn" class="btn-outline flow-back-btn" type="button">← Назад</button>
+        </header>
+
+        <section class="section-card card confirmation-card">
+          <div class="confirmation-icon">✓</div>
+          <h1 class="section-title">Проверьте реквизиты</h1>
+          <p class="intro-copy confirmation-copy">Убедитесь, что способ получения и номер указаны верно.</p>
+
+          <div class="confirmation-list">
+            <div><span>Сумма</span><strong id="confirmAmount">0 ₽</strong></div>
+            <div><span>Способ</span><strong id="confirmMethod">—</strong></div>
+            <div><span>Реквизиты</span><strong id="confirmDetails">—</strong></div>
+          </div>
+
+          <div class="confirmation-actions">
+            <button id="changeWithdrawBtn" class="btn-outline" type="button">Изменить</button>
+            <button id="proceedWithdrawBtn" class="btn btn-primary" type="button">Продолжить</button>
+          </div>
+        </section>
+      </div>
+
+      <div id="transactionState" class="transaction-state" style="display:none">
+        <div class="modal-card card">
+          <div class="loader"></div>
+          <h2 class="section-title">Создаём заявку на вывод</h2>
+          <div class="caption transaction-caption">Обрабатываем данные</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="successScreen" class="screen">
+      <div class="success-screen-wrap">
+        <div class="section-card card center success-card">
+          <div class="checkmark success-checkmark">✓</div>
+          <h2 class="hero-title success-title">Заявка отправлена</h2>
+          <p class="intro-copy success-copy">Все подписки подтверждены. Средства зарезервированы, заявка находится в обработке.</p>
+          <button id="finishBtn" class="btn btn-primary" type="button">Вернуться в профиль</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button id="navTasksBtn" type="button" class="active">
+      <svg class="nav-icon" viewBox="0 0 32 32"><rect x="5" y="5" width="14" height="14" rx="3"></rect><rect x="13" y="13" width="14" height="14" rx="3"></rect></svg>
+      <span class="nav-label">Задания</span>
+    </button>
+    <button id="navTopBtn" type="button" class="">
+      <svg class="nav-icon" viewBox="0 0 32 32"><path d="M10 7h12v7a6 6 0 0 1-12 0V7Z"></path><path d="M10 10H6v2a5 5 0 0 0 5 5"></path><path d="M22 10h4v2a5 5 0 0 1-5 5"></path><path d="M16 20v5"></path><path d="M11 27h10"></path></svg>
+      <span class="nav-label">Топ</span>
+    </button>
+    <button id="navProfileBtn" type="button">
+      <svg class="nav-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"></circle><circle cx="16" cy="12" r="4"></circle><path d="M8.8 25a8.2 8.2 0 0 1 14.4 0"></path></svg>
+      <span class="nav-label">Профиль</span>
+    </button>
+  </nav>
+
+  <div id="withdrawDetailsModal" class="modal-layer" role="dialog" aria-modal="true" aria-labelledby="withdrawDetailsTitle">
+    <div class="modal-card details-modal-card">
+      <button id="closeWithdrawDetailsBtn" class="modal-close" type="button" aria-label="Закрыть">×</button>
+      <div class="details-icon">₽</div>
+      <h2 id="withdrawDetailsTitle" class="section-title">Детали заявки</h2>
+      <div class="details-list">
+        <div><span>Номер заявки</span><strong id="detailRequestId">—</strong></div>
+        <div><span>Сумма</span><strong id="detailAmount">—</strong></div>
+        <div><span>Дата</span><strong id="detailDate">—</strong></div>
+        <div><span>Способ</span><strong id="detailMethod">—</strong></div>
+        <div><span>Реквизиты</span><strong id="detailRequisites">—</strong></div>
+        <div><span>Статус</span><strong id="detailStatus">—</strong></div>
+      </div>
+      <p id="detailsNote" class="details-note">Обычно обработка занимает до 72 часов.</p>
+      <button id="closeWithdrawDetailsBottomBtn" class="btn btn-primary" type="button">Закрыть</button>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="modal-layer">
+    <div class="modal-card">
+      <div class="loader"></div>
+      <h2 class="section-title">Проверяем выполнение</h2>
+      <p class="intro-copy" style="margin-top:10px">Подождите немного. Начисление будет добавлено после проверки.</p>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal-layer">
+    <div class="modal-card">
+      <div class="checkmark" style="width:70px;height:70px;font-size:34px">✓</div>
+      <h2 class="section-title">Задание выполнено</h2>
+      <p id="successModalText" class="intro-copy" style="margin:10px auto 18px">Спасибо! К вашему балансу начислено 0 ₽.</p>
+      <button id="returnTasksBtn" class="btn btn-primary" type="button">Вернуться на главную</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function removeDuplicateShells() {
+        var roots = document.querySelectorAll('main#appRoot');
+        for (var i = 1; i < roots.length; i++) roots[i].remove();
+
+        var navs = document.querySelectorAll('nav.bottom-nav, nav#bottomNav');
+        for (var j = 1; j < navs.length; j++) navs[j].remove();
+
+        var loaders = document.querySelectorAll('#loadingOverlay');
+        for (var k = 1; k < loaders.length; k++) loaders[k].remove();
+
+        var modals = document.querySelectorAll('#successModal');
+        for (var m = 1; m < modals.length; m++) modals[m].remove();
+      }
+
+      removeDuplicateShells();
+
+      if (window.__REOTZOV_APP_STARTED__) {
+        removeDuplicateShells();
+        return;
+      }
+
+      window.__REOTZOV_APP_STARTED__ = true;
+      window.addEventListener('load', removeDuplicateShells);
+
+      var tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp : { ready: function(){}, expand: function(){}, initDataUnsafe: {} };
+      tg.ready();
+      tg.expand();
+
+      var avatars = [
+        ['#111827', '#4b5563', '😎'],
+        ['#7c2d12', '#fb923c', '🧢'],
+        ['#1e1b4b', '#818cf8', '🎧'],
+        ['#3b0764', '#e879f9', '😈'],
+        ['#064e3b', '#34d399', '🐸'],
+        ['#7f1d1d', '#f87171', '🔥'],
+        ['#0f172a', '#38bdf8', '🥶'],
+        ['#422006', '#facc15', '🗝️'],
+        ['#581c87', '#c084fc', '👾'],
+        ['#172554', '#60a5fa', '🚀']
+      ];
+
+      function daySerialFromLocal(date) {
+        var d = date instanceof Date ? date : new Date(date || Date.now());
+        return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+      }
+
+      function dailyCycleIndex(date) {
+        var anchor = new Date(2026, 7, 12);
+        var diff = daySerialFromLocal(date) - daySerialFromLocal(anchor);
+        return ((diff % 3) + 3) % 3;
+      }
+
+      var taskSets = [
+        [
+          {
+            id: 'day1_flowers',
+            task: 'Отзыв о цветочном магазине',
+            price: 330,
+            logo: '🌸',
+            logoClass: 'flowers',
+            requiredChars: 20,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 20 символов',
+            description: 'Напишите отзыв минимум на 20 символов: отметьте свежесть букета и качество обслуживания.',
+            short: 'Короткий положительный отзыв о свежести цветов и работе сотрудников.',
+            templates: [
+              'Букет свежий, всё ок',
+              'Цветы свежие, супер!',
+              'Собрали букет быстро'
+            ]
+          },
+          {
+            id: 'day1_restaurant',
+            task: 'Отзыв о ресторане',
+            price: 420,
+            logo: '🍽️',
+            logoClass: 'restaurant',
+            requiredChars: 25,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 25 символов',
+            description: 'Напишите отзыв минимум на 25 символов: отметьте вкус блюд, сервис и атмосферу.',
+            short: 'Короткий положительный отзыв о кухне, чистоте зала и обслуживании.',
+            templates: [
+              'Вкусно, быстро, зал чист!',
+              'Кухня хорошая, уютно!!!!!',
+              'Ужин прошел очень приятно'
+            ]
+          },
+          {
+            id: 'day1_balloons',
+            task: 'Отзыв о магазине шаров',
+            price: 390,
+            logo: '🎈',
+            logoClass: 'balloons',
+            requiredChars: 40,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 40 символов',
+            description: 'Напишите отзыв минимум на 40 символов: упомяните выбор шаров, оформление и качество сервиса.',
+            short: 'Короткий положительный отзыв о выборе шаров, оформлении и помощи сотрудников.',
+            templates: [
+              'Шары яркие, заказ собрали очень быстро!!',
+              'Выбор шаров большой, оформление супер!!!',
+              'Оформили праздник красиво и аккуратно!!!'
+            ]
+          }
+        ],
+        [
+          {
+            id: 'day2_barbershop',
+            task: 'Отзыв о барбершопе',
+            price: 350,
+            logo: '✂️',
+            logoClass: 'restaurant',
+            requiredChars: 25,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 25 символов',
+            description: 'Напишите отзыв минимум на 25 символов: отметьте работу мастера, аккуратность и атмосферу.',
+            short: 'Положительный отзыв о мастере, качестве стрижки и удобстве посещения.',
+            templates: [
+              'Стрижка аккуратная, мастер отличный',
+              'Мастер понял пожелания, всё понравилось',
+              'Чисто, быстро и очень аккуратно'
+            ]
+          },
+          {
+            id: 'day2_coffee',
+            task: 'Отзыв о кофейне',
+            price: 410,
+            logo: '☕',
+            logoClass: 'flowers',
+            requiredChars: 30,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 30 символов',
+            description: 'Напишите отзыв минимум на 30 символов: отметьте вкус напитков, скорость приготовления и атмосферу.',
+            short: 'Положительный отзыв о кофе, персонале и атмосфере заведения.',
+            templates: [
+              'Кофе вкусный, персонал очень приветливый',
+              'Уютная кофейня, напитки приготовили быстро',
+              'Хороший кофе и приятная атмосфера внутри'
+            ]
+          },
+          {
+            id: 'day2_carwash',
+            task: 'Отзыв об автомойке',
+            price: 370,
+            logo: '🚙',
+            logoClass: 'balloons',
+            requiredChars: 35,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 35 символов',
+            description: 'Напишите отзыв минимум на 35 символов: оцените качество мойки, скорость и результат.',
+            short: 'Положительный отзыв о чистоте автомобиля и качестве обслуживания.',
+            templates: [
+              'Машину помыли тщательно, кузов чистый и блестит',
+              'Быстро помыли авто, внутри тоже стало очень чисто',
+              'Сервис хороший, машину привели в отличный вид'
+            ]
+          }
+        ],
+        [
+          {
+            id: 'day3_beauty',
+            task: 'Отзыв о салоне красоты',
+            price: 360,
+            logo: '💇',
+            logoClass: 'flowers',
+            requiredChars: 25,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 25 символов',
+            description: 'Напишите отзыв минимум на 25 символов: отметьте работу мастера, аккуратность и сервис.',
+            short: 'Положительный отзыв о результате, мастере и атмосфере салона.',
+            templates: [
+              'Мастер аккуратный, результат очень понравился',
+              'Уютный салон и внимательное обслуживание',
+              'Сделали всё аккуратно и без задержек'
+            ]
+          },
+          {
+            id: 'day3_delivery',
+            task: 'Отзыв о доставке еды',
+            price: 430,
+            logo: '🥡',
+            logoClass: 'restaurant',
+            requiredChars: 35,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 35 символов',
+            description: 'Напишите отзыв минимум на 35 символов: отметьте скорость доставки, упаковку и качество заказа.',
+            short: 'Положительный отзыв о скорости доставки, упаковке и качестве еды.',
+            templates: [
+              'Заказ приехал вовремя, всё было горячим и свежим',
+              'Доставили быстро, упаковка аккуратная, всё вкусно',
+              'Курьер приехал вовремя, заказ полностью на месте'
+            ]
+          },
+          {
+            id: 'day3_fitness',
+            task: 'Отзыв о фитнес-клубе',
+            price: 400,
+            logo: '🏋️',
+            logoClass: 'balloons',
+            requiredChars: 30,
+            deadline: 'до 23:59',
+            meta: 'Отзыв от 30 символов',
+            description: 'Напишите отзыв минимум на 30 символов: отметьте состояние зала, тренажёры и работу персонала.',
+            short: 'Положительный отзыв о тренажёрах, чистоте и удобстве занятий.',
+            templates: [
+              'Зал чистый, тренажёров хватает, заниматься удобно',
+              'Хороший клуб, приятная атмосфера и много места',
+              'Тренажёры в порядке, персонал всегда помогает'
+            ]
+          }
+        ]
+      ];
+
+      var activeCycleIndex = dailyCycleIndex();
+      var tasks = taskSets[activeCycleIndex];
+
+      var payMethods = [
+        { label: 'Номер телефона (СБП)', placeholder: '+7 000 000 00 00', max: 11, mask: 'phone', icon: '🏦', name: 'СБП' },
+        { label: 'Номер карты (РФ)', placeholder: '0000 0000 0000 0000', max: 16, mask: 'card', icon: '💳', name: 'Карта РФ' },
+        { label: 'Номер иностранной карты', placeholder: '0000 0000 0000 0000', max: 16, mask: 'card', icon: '🌍', name: 'Иностранная карта' }
+      ];
+
+      var leaders = [
+        ['1', 'Rappthbx', '28 940 ₽'],
+        ['2', 'krezx1', '26 780 ₽'],
+        ['3', 'milotonina', '24 560 ₽'],
+        ['4', 'rogov12_45', '22 410 ₽'],
+        ['5', 'Спайпер', '20 980 ₽'],
+        ['6', 'Сашикссс 🍓', '18 640 ₽'],
+        ['7', 'dmtrkpln', '16 310 ₽'],
+        ['8', 'Ай сберг 🥶', '14 760 ₽'],
+        ['9', 'Романа 🗝️', '12 430 ₽'],
+        ['10', 'bogdanrwqax', '10 120 ₽']
+      ];
+
+      var selectedTask = null;
+      var selectedStars = 0;
+      var selectedTemplateText = '';
+      var balance = 0;
+      var totalEarned = 0;
+      var completed = {};
+      var activeMethod = null;
+      var paymentDrafts = {};
+      var pendingWithdrawAmount = 0;
+      var pendingWithdrawMethod = '';
+      var pendingWithdrawLast4 = '';
+      var pendingWithdrawMasked = '';
+      var withdrawalHistory = [];
+      var accrualHistory = [];
+
+      var STORAGE_KEY = 'reotzov_app_state_v1';
+
+      function accrualDateLabel(date) {
+        return date.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+          ', ' + date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function localDayKey(date) {
+        var d = date instanceof Date ? date : new Date(date || Date.now());
+        var year = d.getFullYear();
+        var month = String(d.getMonth() + 1).padStart(2, '0');
+        var day = String(d.getDate()).padStart(2, '0');
+        return year + '-' + month + '-' + day;
+      }
+
+      var activeDayKey = localDayKey();
+
+      function refreshDailyContentIfNeeded() {
+        var newDayKey = localDayKey();
+        if (newDayKey === activeDayKey) return false;
+
+        activeDayKey = newDayKey;
+        activeCycleIndex = dailyCycleIndex();
+        tasks = taskSets[activeCycleIndex];
+        completed = {};
+        selectedTask = null;
+        selectedStars = 0;
+        selectedTemplateText = '';
+
+        persistAppState();
+        renderTasks();
+        updateState();
+
+        var nowDate = new Date();
+        var currentDate = el('currentDate');
+        if (currentDate) {
+          currentDate.textContent = nowDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+        }
+
+        var todayTitle = el('todayTasksTitle');
+        if (todayTitle) {
+          var dd = String(nowDate.getDate()).padStart(2, '0');
+          var mm = String(nowDate.getMonth() + 1).padStart(2, '0');
+          var yy = String(nowDate.getFullYear()).slice(-2);
+          todayTitle.textContent = 'Задания на ' + dd + '.' + mm + '.' + yy;
+        }
+
+        return true;
+      }
+
+      function persistAppState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            balance: balance,
+            totalEarned: totalEarned,
+            completed: completed,
+            completedDate: localDayKey(),
+            cycleIndex: activeCycleIndex,
+            withdrawalHistory: withdrawalHistory,
+            accrualHistory: accrualHistory,
+            paymentDrafts: paymentDrafts,
+            savedAt: new Date().toISOString()
+          }));
+        } catch (error) {}
+      }
+
+      function restoreAppState() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          var state = JSON.parse(raw);
+          balance = Number(state.balance || 0);
+          totalEarned = state.totalEarned !== undefined ? Number(state.totalEarned || 0) : balance;
+          var savedDay = state.completedDate ||
+            (state.savedAt ? localDayKey(new Date(state.savedAt)) : localDayKey());
+          completed = savedDay === localDayKey() && state.completed && typeof state.completed === 'object'
+            ? state.completed
+            : {};
+          withdrawalHistory = Array.isArray(state.withdrawalHistory) ? state.withdrawalHistory : [];
+          if (Array.isArray(state.accrualHistory)) {
+            accrualHistory = state.accrualHistory;
+          } else {
+            // Сохранение сделано до появления истории: восстанавливаем начисления за сегодняшние выполненные задания
+            var savedDate = new Date(state.savedAt || Date.now());
+            accrualHistory = tasks.filter(function(task) { return completed[task.id]; }).map(function(task) {
+              return { date: accrualDateLabel(savedDate), task: task.task, logo: task.logo, amount: Number(task.price) };
+            });
+          }
+          paymentDrafts = state.paymentDrafts && typeof state.paymentDrafts === 'object' ? state.paymentDrafts : {};
+          pendingWithdrawAmount = 0;
+        } catch (error) {}
+      }
+
+      function paymentDraftKey(method) {
+        return method ? method.name : '';
+      }
+
+      function saveCurrentPaymentDraft() {
+        var input = el('withdrawInput');
+        if (!input || !activeMethod) return;
+        paymentDrafts[paymentDraftKey(activeMethod)] = input.value;
+        persistAppState();
+      }
+
+      function restorePaymentDraft() {
+        var input = el('withdrawInput');
+        if (!input || !activeMethod) return;
+        input.placeholder = activeMethod.placeholder || '';
+        input.value = paymentDrafts[paymentDraftKey(activeMethod)] || '';
+        applyWithdrawMask();
+      }
+
+      function haptic(kind) {
+        try {
+          if (!tg.HapticFeedback) return;
+          if (kind === 'success' || kind === 'error' || kind === 'warning') {
+            tg.HapticFeedback.notificationOccurred(kind);
+          } else if (kind === 'selection') {
+            tg.HapticFeedback.selectionChanged();
+          } else {
+            tg.HapticFeedback.impactOccurred(kind || 'light');
+          }
+        } catch (error) {}
+      }
+
+      function restartAnimation(node, className) {
+        if (!node) return;
+        node.classList.remove(className);
+        void node.offsetWidth;
+        node.classList.add(className);
+      }
+
+      function showInlineError(message, target) {
+        var box = el('ratingMessage');
+        if (box) {
+          box.textContent = message;
+          box.classList.add('show');
+          restartAnimation(box, 'show');
+        }
+        if (target) restartAnimation(target, 'attention');
+        haptic('error');
+      }
+
+      function animateNumber(node, target) {
+        if (!node) return;
+        var current = Number(String(node.textContent || '0').replace(/\D/g, '')) || 0;
+        target = Number(target || 0);
+        if (current === target) {
+          node.textContent = target;
+          return;
+        }
+
+        var start = performance.now();
+        var duration = 420;
+        function frame(now) {
+          var progress = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          node.textContent = Math.round(current + (target - current) * eased);
+          if (progress < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function pulseBalance() {
+        document.querySelectorAll('.balance-pill, .profile-stat.primary-stat, .balance-withdraw-card').forEach(function(node) {
+          restartAnimation(node, 'balance-updated');
+        });
+      }
+
+      function updateDayStatus() {
+        var done = completedCount();
+        var total = tasks.length;
+        setText('dayProgressText', 'Выполнено ' + done + ' из ' + total);
+        setText('dayRemainingText', done >= total ? 'На сегодня всё' : 'Осталось ' + (total - done));
+      }
+
+      function maskedRequisites(value, method) {
+        var clean = digits(value);
+        if (!clean) return '—';
+        var last4 = clean.slice(-4);
+        if (method && method.mask === 'phone') return '+7 ••• ••• ' + last4;
+        return '•••• •••• •••• ' + last4;
+      }
+
+      function requestIdFor(item) {
+        if (item.requestId) return item.requestId;
+        var raw = String(item.date || '') + String(item.amount || '') + String(item.last4 || '');
+        var hash = 0;
+        for (var i = 0; i < raw.length; i++) hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
+        return 'RO-' + String(Math.abs(hash)).padStart(6, '0').slice(0, 6);
+      }
+
+      function el(id) { return document.getElementById(id); }
+      function setText(id, value) { var node = el(id); if (node) node.textContent = value; }
+      function digits(value) { return String(value || '').replace(/[^0-9]/g, ''); }
+      function safe(value) {
+        return String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function applyTelegramUserAvatar(user) {
+        if (!user || !user.photo_url) return;
+
+        var photoUrl = user.photo_url;
+
+        var profileAvatar = document.querySelector('.profile-avatar-inner');
+        if (profileAvatar) {
+          profileAvatar.innerHTML = '<img class="profile-avatar-img" src="' + safe(photoUrl) + '" alt="">';
+        }
+
+        var miniAvatar = document.querySelector('.mini-avatar');
+        if (miniAvatar) {
+          miniAvatar.innerHTML = '<img class="mini-avatar-img" src="' + safe(photoUrl) + '" alt="">';
+        }
+      }
+
+      function completedCount() { return Object.keys(completed).length; }
+
+      function avatarSvg(a, b, emoji) {
+        return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">' +
+          '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0" stop-color="' + a + '"/>' +
+          '<stop offset="1" stop-color="' + b + '"/>' +
+          '</linearGradient></defs>' +
+          '<rect width="96" height="96" rx="48" fill="url(#g)"/>' +
+          '<circle cx="68" cy="22" r="22" fill="rgba(255,255,255,.22)"/>' +
+          '<text x="48" y="60" text-anchor="middle" font-size="38">' + emoji + '</text>' +
+          '</svg>'
+        );
+      }
+
+      function updateNav(active) {
+        ['navTasksBtn', 'navTopBtn', 'navProfileBtn'].forEach(function(id) {
+          var node = el(id);
+          if (node) node.classList.remove('active');
+        });
+        if (active === 'profile' && el('navProfileBtn')) el('navProfileBtn').classList.add('active');
+        else if (active === 'top' && el('navTopBtn')) el('navTopBtn').classList.add('active');
+        else if (el('navTasksBtn')) el('navTasksBtn').classList.add('active');
+      }
+
+      function showScreen(id) {
+        ['introScreen', 'tasksScreen', 'executeScreen', 'topScreen', 'profileScreen', 'withdrawScreen', 'successScreen'].forEach(function(s) {
+          if (el(s)) el(s).classList.remove('active');
+        });
+        if (el(id)) el(id).classList.add('active');
+        if (el('appRoot')) el('appRoot').classList.toggle('top-theme', id === 'topScreen');
+        updateNav(id === 'profileScreen' ? 'profile' : id === 'topScreen' ? 'top' : 'tasks');
+        window.scrollTo(0, 0);
+      }
+
+      function formatCard(value) {
+        var clean = digits(value).slice(0, 16);
+        var groups = [];
+        for (var i = 0; i < clean.length; i += 4) groups.push(clean.slice(i, i + 4));
+        return groups.join(' ');
+      }
+
+      function formatCardGhost(value) {
+        var clean = digits(value).slice(0, 16);
+        var padded = clean + new Array(16 - clean.length + 1).join('0');
+        var groups = [];
+        for (var i = 0; i < 16; i += 4) groups.push(padded.slice(i, i + 4));
+        return groups.join(' ');
+      }
+
+      function formatPhone(value) {
+        var clean = digits(value).slice(0, 11);
+        if (clean && clean.charAt(0) !== '7') clean = '7' + clean.replace(/^8/, '').slice(0, 10);
+        var rest = clean.slice(1);
+        var output = '+7';
+        if (rest.length > 0) output += ' ' + rest.slice(0, 3);
+        if (rest.length > 3) output += ' ' + rest.slice(3, 6);
+        if (rest.length > 6) output += ' ' + rest.slice(6, 8);
+        if (rest.length > 8) output += ' ' + rest.slice(8, 10);
+        return output;
+      }
+
+      function formatPhoneGhost(value) {
+        var clean = digits(value).slice(0, 11);
+        if (clean && clean.charAt(0) !== '7') clean = '7' + clean.replace(/^8/, '').slice(0, 10);
+        var rest = clean.slice(1);
+        var slots = [3, 3, 2, 2];
+        var output = '+7';
+        var index = 0;
+        for (var i = 0; i < slots.length; i++) {
+          var part = rest.slice(index, index + slots[i]);
+          output += ' ' + part + new Array(slots[i] - part.length + 1).join('0');
+          index += slots[i];
+        }
+        return output;
+      }
+
+      function renderWithdrawPreview() {
+        var preview = el('withdrawPreview');
+        var input = el('withdrawInput');
+        if (!preview || !input) return;
+
+        if (!activeMethod) {
+          preview.innerHTML = '<span class="withdraw-preview-missing">0000 0000 0000 0000</span>';
+          return;
+        }
+
+        var clean = digits(input.value).slice(0, activeMethod.max);
+        var full = activeMethod.mask === 'phone' ? formatPhoneGhost(clean) : formatCardGhost(clean);
+        var entered = activeMethod.mask === 'phone' ? formatPhone(clean) : formatCard(clean);
+        if (activeMethod.mask === 'phone' && clean.length <= 1) entered = '+7';
+
+        preview.innerHTML =
+          '<span class="withdraw-preview-entered">' + safe(full.slice(0, entered.length)) + '</span>' +
+          '<span class="withdraw-preview-missing">' + safe(full.slice(entered.length)) + '</span>';
+      }
+
+      function clearIntroSelection() {
+        document.querySelectorAll('#introTasksList .task-card').forEach(function(card) {
+          card.classList.remove('selected', 'expanded');
+        });
+      }
+
+      function renderIntroTasks() {
+        var list = el('introTasksList');
+        if (!list) return;
+
+        list.innerHTML = '';
+
+        tasks.forEach(function(task) {
+          var card = document.createElement('div');
+          card.className = 'task-card';
+          card.setAttribute('role', 'button');
+          card.setAttribute('tabindex', completed[task.id] ? '-1' : '0');
+          card.setAttribute('aria-label', task.task + ', начисление ' + task.price + ' рублей, доступно ' + task.deadline);
+
+          card.innerHTML =
+            '<div class="task-row">' +
+              '<div>' +
+                '<div class="task-title-line"><span class="task-mini-logo ' + safe(task.logoClass || '') + '">' + safe(task.logo) + '</span><div class="task-name">' + safe(task.task) + '</div></div>' +
+                '<div class="task-card-footer">' + safe(task.deadline) + '</div>' +
+                '<div class="badge-place"></div>' +
+              '</div>' +
+              '<div class="task-price">+' + task.price + ' ₽</div>' +
+            '</div>';
+
+          if (completed[task.id]) {
+            card.classList.add('done');
+            card.removeAttribute('role');
+            card.querySelector('.badge-place').innerHTML = '<span class="done-badge">✓ Выполнено</span>';
+          } else {
+            var details = document.createElement('div');
+            details.className = 'intro-task-details';
+            details.innerHTML =
+              '<div class="caption">Условия задания</div>' +
+              '<h3>' + safe(task.task) + '</h3>' +
+              '<p>' + safe(task.short) + '</p>' +
+              '<button class="btn btn-primary intro-start-task" type="button">Начать выполнение</button>';
+
+            card.appendChild(details);
+
+            function selectCard() {
+              clearIntroSelection();
+              selectedTask = task;
+              card.classList.add('selected', 'expanded');
+              haptic('selection');
+            }
+
+            card.onclick = selectCard;
+            card.onkeydown = function(event) {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                selectCard();
+              }
+            };
+
+            details.querySelector('.intro-start-task').onclick = function(event) {
+              event.stopPropagation();
+              selectedTask = task;
+              prepareExecution();
+              showScreen('executeScreen');
+              haptic('light');
+            };
+          }
+
+          list.appendChild(card);
+        });
+      }
+
+      function renderTasks() {
+        var list = el('tasksList');
+        if (!list) return;
+
+        list.innerHTML = '';
+
+        tasks.forEach(function(task) {
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'task-card';
+          button.setAttribute('aria-label', task.task + ', начисление ' + task.price + ' рублей');
+
+          button.innerHTML =
+            '<div class="task-row">' +
+              '<div>' +
+                '<div class="task-title-line"><span class="task-mini-logo ' + safe(task.logoClass || '') + '">' + safe(task.logo) + '</span><div class="task-name">' + safe(task.task) + '</div></div>' +
+                '<div class="task-meta">' + safe(task.meta) + '</div>' +
+                '<div class="task-card-footer">' + safe(task.deadline) + '</div>' +
+                '<div class="badge-place"></div>' +
+              '</div>' +
+              '<div class="task-price">+' + task.price + ' ₽</div>' +
+            '</div>';
+
+          if (completed[task.id]) {
+            button.disabled = true;
+            button.classList.add('done');
+            button.querySelector('.badge-place').innerHTML = '<span class="done-badge">✓ Выполнено</span>';
+          }
+
+          button.onclick = function() {
+            if (button.disabled) return;
+
+            document.querySelectorAll('#tasksList .task-card').forEach(function(item) {
+              item.classList.remove('selected');
+            });
+
+            button.classList.add('selected');
+            selectedTask = task;
+            setText('selectedTaskTitle', task.task);
+            setText('selectedTaskPrice', '+' + task.price + ' ₽');
+            setText('selectedTaskText', task.short + ' Задание доступно ' + task.deadline + '.');
+            haptic('selection');
+          };
+
+          list.appendChild(button);
+        });
+      }
+
+      function renderTop() {
+        var list = el('topLeaders');
+        if (!list) return;
+
+        list.innerHTML = '';
+
+        leaders.forEach(function(leader, index) {
+          var rankClass = index === 0 ? 'leader-rank gold' : 'leader-rank';
+          var rankStyle = index === 2 ? ' style="color:#ffae48"' : '';
+          var king = index === 0 ? ' king' : '';
+          var avatar = avatarSvg(avatars[index][0], avatars[index][1], avatars[index][2]);
+
+          list.innerHTML +=
+            '<div class="leader-row">' +
+              '<div class="' + rankClass + '"' + rankStyle + '>' + leader[0] + '</div>' +
+              '<img class="leader-avatar' + king + '" src="' + avatar + '" alt="">' +
+              '<div class="leader-name">' + safe(leader[1]) + '</div>' +
+              '<div class="leader-balance">' + leader[2] + '</div>' +
+            '</div>';
+        });
+      }
+
+      function renderStars() {
+        var row = el('starsRow');
+        if (!row) return;
+
+        row.innerHTML = '';
+
+        for (var i = 1; i <= 5; i++) {
+          (function(value) {
+            var button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'star-btn';
+            button.dataset.star = value;
+            button.textContent = '★';
+            button.setAttribute('role', 'radio');
+            button.setAttribute('aria-label', value + (value === 1 ? ' звезда' : ' звёзд'));
+            button.setAttribute('aria-checked', 'false');
+
+            button.onclick = function() {
+              selectedStars = value;
+              document.querySelectorAll('.star-btn').forEach(function(star) {
+                var active = Number(star.dataset.star) <= selectedStars;
+                star.classList.toggle('active', active);
+                star.setAttribute('aria-checked', Number(star.dataset.star) === selectedStars ? 'true' : 'false');
+              });
+              if (selectedStars === 5 && el('ratingMessage')) el('ratingMessage').classList.remove('show');
+              if (el('ratingSection')) el('ratingSection').classList.remove('attention');
+              updatePublishState();
+              haptic('selection');
+            };
+
+            row.appendChild(button);
+          })(i);
+        }
+      }
+
+      function renderPayMethods() {
+        var list = el('payMethods');
+        if (!list) return;
+
+        list.innerHTML = '';
+
+        payMethods.forEach(function(method) {
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'pay-method card';
+          button.setAttribute('aria-pressed', 'false');
+          button.setAttribute('aria-label', 'Выбрать способ: ' + method.name);
+          button.innerHTML =
+            '<div class="pay-icon" aria-hidden="true">' + method.icon + '</div>' +
+            '<div style="font-size:13px;font-weight:650">' + method.name + '</div>' +
+            '<div class="method-dot"></div>';
+
+          button.onclick = function() {
+            saveCurrentPaymentDraft();
+
+            document.querySelectorAll('.pay-method').forEach(function(item) {
+              item.classList.remove('active');
+              item.setAttribute('aria-pressed', 'false');
+            });
+
+            button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
+            activeMethod = method;
+
+            if (el('withdrawForm')) el('withdrawForm').classList.add('show');
+            setText('selectedMethodName', method.name);
+            setText('withdrawInputLabel', method.label);
+            setText('withdrawInputHint', 'Осталось ввести цифр: ' + method.max + '. Формат: ' + method.placeholder);
+
+            var input = el('withdrawInput');
+            if (input) {
+              restorePaymentDraft();
+              input.focus();
+            }
+            haptic('selection');
+          };
+
+          list.appendChild(button);
+        });
+      }
+
+      function renderWithdrawHistory() {
+        var list = el('withdrawHistoryList');
+        var empty = el('withdrawHistoryEmpty');
+
+        if (!list || !empty) return;
+
+        list.innerHTML = '';
+        empty.style.display = withdrawalHistory.length ? 'none' : '';
+
+        var statusMap = {
+          processing: { label: 'В обработке', className: 'status-processing' },
+          'в обработке': { label: 'В обработке', className: 'status-processing' },
+          done: { label: 'Выведено', className: 'status-done' },
+          'выведено': { label: 'Выведено', className: 'status-done' },
+          error: { label: 'Ошибка', className: 'status-error' },
+          'ошибка': { label: 'Ошибка', className: 'status-error' }
+        };
+
+        withdrawalHistory.forEach(function(item, index) {
+          var row = document.createElement('button');
+          var status = statusMap[item.status] || statusMap.processing;
+          var methodLine = item.method
+            ? safe(item.method) + (item.last4 ? ' •••• ' + safe(item.last4) : '')
+            : 'Способ получения не указан';
+
+          row.type = 'button';
+          row.className = 'withdraw-history-item';
+          row.setAttribute('aria-label', 'Заявка на ' + item.amount + ' рублей, статус ' + status.label);
+          row.innerHTML =
+            '<div class="withdraw-history-row">' +
+              '<div>' +
+                '<div class="withdraw-date">' + safe(item.date) + '</div>' +
+                '<div class="withdraw-method-line">' + methodLine + '</div>' +
+                '<div class="withdraw-status ' + status.className + '">' + status.label + '</div>' +
+              '</div>' +
+              '<div class="withdraw-sum">' + item.amount + ' ₽</div>' +
+            '</div>';
+
+          row.onclick = function() {
+            openWithdrawDetails(item, status.label);
+          };
+
+          list.appendChild(row);
+        });
+      }
+
+      function renderAccrualHistory() {
+        var list = el('accrualHistoryList');
+        var empty = el('accrualHistoryEmpty');
+
+        if (!list || !empty) return;
+
+        list.innerHTML = '';
+        empty.style.display = accrualHistory.length ? 'none' : '';
+
+        accrualHistory.forEach(function(item) {
+          var row = document.createElement('div');
+          row.className = 'withdraw-history-item accrual-item';
+          row.innerHTML =
+            '<div class="withdraw-history-row">' +
+              '<div>' +
+                '<div class="accrual-task">' + safe((item.logo ? item.logo + ' ' : '') + item.task) + '</div>' +
+                '<div class="withdraw-date">' + safe(item.date) + '</div>' +
+              '</div>' +
+              '<div class="withdraw-sum accrual-sum">+' + Number(item.amount || 0) + ' ₽</div>' +
+            '</div>';
+
+          list.appendChild(row);
+        });
+      }
+
+      function openWithdrawDetails(item, statusLabel) {
+        setText('detailRequestId', requestIdFor(item));
+        setText('detailAmount', Number(item.amount || 0) + ' ₽');
+        setText('detailDate', item.date || '—');
+        setText('detailMethod', item.method || 'Не указан');
+        setText('detailRequisites', item.last4 ? '•••• ' + item.last4 : 'Не сохранены');
+        setText('detailStatus', statusLabel || 'В обработке');
+        if (statusLabel === 'Ошибка') setText('detailsNote', 'Проверка не пройдена. Средства не списаны и остаются доступными.');
+        else if (statusLabel === 'Выведено') setText('detailsNote', 'Заявка завершена, средства отправлены.');
+        else setText('detailsNote', 'Обычно обработка занимает до 72 часов.');
+
+        var modal = el('withdrawDetailsModal');
+        if (modal) {
+          modal.classList.add('active');
+          setTimeout(function() {
+            if (el('closeWithdrawDetailsBtn')) el('closeWithdrawDetailsBtn').focus();
+          }, 0);
+        }
+        haptic('light');
+      }
+
+      function addWithdrawalRequest() {
+        var requestedAmount = Number(pendingWithdrawAmount || balance || 0);
+        var availableBalance = Number(balance || 0);
+        var amount = Math.min(requestedAmount, availableBalance);
+
+        if (amount <= 0) return false;
+
+        var now = new Date();
+        var date = now.toLocaleDateString('ru-RU', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+
+        withdrawalHistory.unshift({
+          requestId: 'RO-' + String(now.getTime()).slice(-6),
+          date: date,
+          amount: amount,
+          method: pendingWithdrawMethod || (activeMethod ? activeMethod.name : ''),
+          last4: pendingWithdrawLast4 || '',
+          status: 'processing'
+        });
+
+        balance = Math.max(0, availableBalance - amount);
+        pendingWithdrawAmount = 0;
+        pendingWithdrawMethod = '';
+        pendingWithdrawLast4 = '';
+        pendingWithdrawMasked = '';
+        persistAppState();
+
+        renderWithdrawHistory();
+        return true;
+      }
+
+      function addWithdrawalErrorAttempt() {
+        var amount = Number(pendingWithdrawAmount || balance || 0);
+        if (amount <= 0) return;
+
+        var method = pendingWithdrawMethod || (activeMethod ? activeMethod.name : '');
+        var last4 = pendingWithdrawLast4 || '';
+        var previous = withdrawalHistory[0];
+
+        if (previous &&
+            previous.status === 'error' &&
+            Number(previous.amount || 0) === amount &&
+            String(previous.method || '') === method &&
+            String(previous.last4 || '') === last4) {
+          return;
+        }
+
+        var now = new Date();
+        var date = now.toLocaleDateString('ru-RU', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+
+        withdrawalHistory.unshift({
+          requestId: 'RO-' + String(now.getTime()).slice(-6),
+          date: date,
+          amount: amount,
+          method: method,
+          last4: last4,
+          status: 'error'
+        });
+        persistAppState();
+        renderWithdrawHistory();
+      }
+
+      function userRank() {
+        var count = completedCount();
+        if (count >= 3) return 2874;
+        if (count === 2) return 4126;
+        if (count === 1) return 5391;
+        return 7182;
+      }
+
+      function updateWithdrawButtons() {
+        var disabled = Number(balance || 0) <= 0;
+
+        ['introWithdrawBtn', 'withdrawAvailableBtn'].forEach(function(id) {
+          var button = el(id);
+          if (!button) return;
+
+          button.disabled = disabled;
+          button.classList.toggle('withdraw-disabled', disabled);
+          button.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+        });
+      }
+
+      function updateState() {
+        renderIntroTasks();
+        renderWithdrawHistory();
+        renderAccrualHistory();
+        updateDayStatus();
+
+        var rank = el('userTopRank');
+        if (rank) rank.textContent = userRank();
+
+        var allDone = completedCount() >= tasks.length;
+
+        if (el('taskSelectionPanel')) el('taskSelectionPanel').style.display = allDone ? 'none' : '';
+        if (el('continueTaskBtn')) el('continueTaskBtn').style.display = allDone ? 'none' : '';
+        if (el('allDonePanel')) el('allDonePanel').style.display = allDone ? '' : 'none';
+        if (el('introTasksPanel')) el('introTasksPanel').style.display = allDone ? 'none' : '';
+        if (el('introAllDonePanel')) el('introAllDonePanel').style.display = allDone ? '' : 'none';
+
+        animateNumber(el('profileAvailable'), balance);
+        setText('profileCompleted', completedCount());
+        animateNumber(el('withdrawBalance'), balance);
+
+        document.querySelectorAll('.balanceAmount').forEach(function(node) {
+          animateNumber(node, balance);
+        });
+
+
+        var user = tg.initDataUnsafe && tg.initDataUnsafe.user;
+        if (user && user.first_name) {
+          setText('profileName', user.first_name);
+          var userName = document.querySelector('.user-name');
+          if (userName) userName.textContent = user.first_name;
+        }
+
+        applyTelegramUserAvatar(user);
+        updateWithdrawButtons();
+      }
+
+
+      function setReviewMode(mode) {
+        var review = el('reviewText');
+        var list = el('templatesList');
+        var hint = el('manualModeHint');
+
+        if (list) {
+          list.classList.toggle('manual-mode', mode === 'manual');
+          list.classList.toggle('template-mode', mode === 'template');
+        }
+
+        if (review) {
+          review.classList.toggle('manual-muted', mode === 'template');
+          review.classList.toggle('manual-active', mode === 'manual' || mode === 'none');
+        }
+
+        if (hint) {
+          if (mode === 'template') hint.textContent = 'Нажмите на поле, чтобы написать свой вариант';
+          else if (mode === 'manual') hint.textContent = 'Вы пишете собственный вариант';
+          else hint.textContent = 'Можно выбрать шаблон или написать свой отзыв';
+        }
+
+        updatePublishState();
+      }
+
+      function handleReviewFocus() {
+        selectedTemplateText = '';
+
+        document.querySelectorAll('.template-btn').forEach(function(item) {
+          item.classList.remove('active');
+          item.setAttribute('aria-checked', 'false');
+        });
+
+        setReviewMode('manual');
+        updateReviewCounter();
+        haptic('selection');
+      }
+
+      function handleReviewInput() {
+        var review = el('reviewText');
+        if (review) review.classList.remove('attention');
+
+        if (review && review.value.length > 0) {
+          selectedTemplateText = '';
+
+          document.querySelectorAll('.template-btn').forEach(function(item) {
+            item.classList.remove('active');
+            item.setAttribute('aria-checked', 'false');
+          });
+
+          setReviewMode('manual');
+        } else if (!selectedTemplateText) {
+          setReviewMode('none');
+        }
+
+        updateReviewCounter();
+      }
+
+      function updatePublishState() {
+        var button = el('publishBtn');
+        if (!button || !selectedTask) return;
+
+        var enoughText = hasSelectedReviewSource() &&
+          selectedReviewLength() >= Number(selectedTask.requiredChars || 0);
+        var ready = enoughText && selectedStars === 5;
+
+        button.classList.toggle('is-idle', !enoughText);
+        button.classList.toggle('is-partial', enoughText && selectedStars < 5);
+        button.classList.toggle('is-ready', ready);
+        button.setAttribute('aria-disabled', ready ? 'false' : 'true');
+      }
+
+      function updateReviewCounter() {
+        var review = el('reviewText');
+        var counter = el('reviewCounter');
+        if (!review || !counter || !selectedTask) return;
+
+        var manualLength = review.value.length;
+        var need = Number(selectedTask.requiredChars || 0);
+        var countedLength = selectedTemplateText ? selectedTemplateText.length : manualLength;
+        var left = Math.max(need - countedLength, 0);
+
+        counter.textContent = 'Осталось: ' + left + ' символов.';
+
+        if (left === 0) {
+          counter.classList.add('good');
+          if (el('ratingMessage')) el('ratingMessage').classList.remove('show');
+        } else {
+          counter.classList.remove('good');
+        }
+
+        updatePublishState();
+      }
+
+      function selectedReviewLength() {
+        var review = el('reviewText');
+        if (selectedTemplateText) return selectedTemplateText.length;
+        var manual = review ? review.value.trim() : '';
+        return manual.length;
+      }
+
+      function hasSelectedReviewSource() {
+        var review = el('reviewText');
+        var manual = review ? review.value.trim() : '';
+        return !!selectedTemplateText || manual.length > 0;
+      }
+
+      function prepareExecution() {
+        if (!selectedTask) return;
+
+        selectedStars = 0;
+        selectedTemplateText = '';
+        renderStars();
+
+        if (el('ratingMessage')) el('ratingMessage').classList.remove('show');
+
+        setText('executeLogo', selectedTask.logo);
+        setText('executeTaskTitle', selectedTask.task);
+        setText('executeTaskMeta', selectedTask.meta + ' • ' + selectedTask.deadline);
+        setText('executeTaskPrice', '+' + selectedTask.price + ' ₽');
+        setText('executeTaskDescription', selectedTask.description);
+
+        var review = el('reviewText');
+
+        if (review) {
+          review.value = '';
+          review.blur();
+          review.removeEventListener('input', handleReviewInput);
+          review.addEventListener('input', handleReviewInput);
+          review.removeEventListener('focus', handleReviewFocus);
+          review.addEventListener('focus', handleReviewFocus);
+        }
+
+        setReviewMode('none');
+
+        var list = el('templatesList');
+        if (!list) return;
+
+        list.innerHTML = '';
+
+        selectedTask.templates.forEach(function(template, index) {
+          var button = document.createElement('button');
+
+          button.type = 'button';
+          button.className = 'template-btn';
+          button.setAttribute('role', 'radio');
+          button.setAttribute('aria-checked', 'false');
+          button.setAttribute('aria-label', 'Шаблон ' + (index + 1) + ': ' + template);
+
+          var need = Number(selectedTask.requiredChars || 0);
+          button.innerHTML =
+            '<span class="template-text">' + safe(template) + '</span>' +
+            '<span class="template-radio" aria-hidden="true"></span>';
+
+          if (template.length >= need) {
+            button.classList.add('valid-template');
+          }
+
+          button.onclick = function() {
+            var review = el('reviewText');
+
+            if (review) {
+              review.blur();
+              review.classList.remove('attention');
+            }
+
+            document.querySelectorAll('.template-btn').forEach(function(item) {
+              item.classList.remove('active');
+              item.setAttribute('aria-checked', 'false');
+            });
+
+            button.classList.add('active');
+            button.setAttribute('aria-checked', 'true');
+            selectedTemplateText = template;
+            setReviewMode('template');
+
+            if (el('ratingMessage')) el('ratingMessage').classList.remove('show');
+            updateReviewCounter();
+            haptic('selection');
+          };
+
+          list.appendChild(button);
+        });
+
+        updateReviewCounter();
+        updatePublishState();
+      }
+
+      function applyWithdrawMask() {
+        var input = el('withdrawInput');
+        if (!input || !activeMethod) return;
+
+        input.placeholder = activeMethod.placeholder || '';
+        var clean = digits(input.value).slice(0, activeMethod.max);
+        input.value = activeMethod.mask === 'phone' ? formatPhone(clean) : formatCard(clean);
+
+        requestAnimationFrame(function() {
+          try {
+            var end = input.value.length;
+            input.setSelectionRange(end, end);
+          } catch (error) {}
+        });
+
+        renderWithdrawPreview();
+
+        var left = activeMethod.max - digits(input.value).length;
+        setText(
+          'withdrawInputHint',
+          left > 0 ? 'Осталось ввести цифр: ' + left + '. Формат: ' + activeMethod.placeholder : 'Все цифры введены. Можно проверить данные.'
+        );
+      }
+
+      function resetTaskSelection() {
+        clearIntroSelection();
+        selectedTask = null;
+        selectedStars = 0;
+        setText('selectedTaskTitle', 'Выберите задачу выше');
+        setText('selectedTaskPrice', '—');
+        setText('selectedTaskText', 'После выбора здесь появится краткая инструкция.');
+      }
+
+      function openTasksHome() {
+        resetTaskSelection();
+        renderTasks();
+        updateState();
+        showScreen('introScreen');
+      }
+
+
+      function setupBottomNavKeyboardBehavior() {
+        document.addEventListener('focusin', function(event) {
+          var target = event.target;
+          if (!target) return;
+
+          if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+            document.body.classList.add('keyboard-open');
+          }
+        });
+
+        document.addEventListener('focusout', function() {
+          setTimeout(function() {
+            var active = document.activeElement;
+            var keyboardStillOpen = active &&
+              (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
+
+            if (!keyboardStillOpen) {
+              document.body.classList.remove('keyboard-open');
+            }
+          }, 80);
+        });
+      }
+
+      function setupKeyboardDismiss() {
+        document.addEventListener('touchstart', function (event) {
+          var active = document.activeElement;
+          if (!active || (active.tagName !== 'TEXTAREA' && active.tagName !== 'INPUT')) return;
+          if (event.target === active) return;
+          if (event.target.closest && event.target.closest('textarea, input, .withdraw-input-wrap')) return;
+          active.blur();
+        }, { passive: true });
+
+        document.addEventListener('click', function (event) {
+          var active = document.activeElement;
+          if (!active || (active.tagName !== 'TEXTAREA' && active.tagName !== 'INPUT')) return;
+          if (event.target === active) return;
+          if (event.target.closest && event.target.closest('textarea, input, .withdraw-input-wrap')) return;
+          active.blur();
+        });
+      }
+
+      function bind(id, eventName, handler) {
+        var node = el(id);
+        if (node) node.addEventListener(eventName, handler);
+      }
+
+      bind('executeBackBtn', 'click', function() {
+        selectedTemplateText = '';
+        selectedStars = 0;
+
+        var review = el('reviewText');
+        if (review) {
+          review.value = '';
+          review.blur();
+        }
+
+        if (el('ratingMessage')) el('ratingMessage').classList.remove('show');
+        setReviewMode('none');
+        showScreen('introScreen');
+      });
+
+      bind('continueTaskBtn', 'click', function() {
+        if (!selectedTask) {
+          alert('Выберите задание из списка.');
+          return;
+        }
+        prepareExecution();
+        showScreen('executeScreen');
+      });
+
+      bind('publishBtn', 'click', function() {
+        if (!selectedTask) return;
+
+        var needChars = Number(selectedTask.requiredChars || 0);
+        var currentChars = selectedReviewLength();
+
+        if (!hasSelectedReviewSource()) {
+          showInlineError('Выберите шаблон или напишите отзыв.', el('reviewText'));
+          if (el('reviewText')) el('reviewText').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        if (currentChars < needChars) {
+          showInlineError('Осталось дописать ' + (needChars - currentChars) + ' символов.', el('reviewText'));
+          if (el('reviewText')) el('reviewText').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        if (selectedStars < 5) {
+          showInlineError('Для выполнения задания выберите 5 звёзд.', el('ratingSection'));
+          if (el('ratingSection')) el('ratingSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        var button = el('publishBtn');
+        if (button) button.disabled = true;
+        if (el('loadingOverlay')) el('loadingOverlay').classList.add('active');
+        haptic('light');
+
+        setTimeout(function() {
+          if (el('loadingOverlay')) el('loadingOverlay').classList.remove('active');
+          if (button) button.disabled = false;
+
+          completed[selectedTask.id] = true;
+          balance += Number(selectedTask.price);
+          totalEarned += Number(selectedTask.price);
+          accrualHistory.unshift({
+            date: accrualDateLabel(new Date()),
+            task: selectedTask.task,
+            logo: selectedTask.logo,
+            amount: Number(selectedTask.price)
+          });
+          persistAppState();
+
+          updateState();
+          renderTasks();
+          pulseBalance();
+          setText('successModalText', 'Спасибо! К вашему балансу начислено ' + selectedTask.price + ' ₽.');
+
+          if (el('successModal')) el('successModal').classList.add('active');
+          haptic('success');
+        }, 1800);
+      });
+
+      bind('returnTasksBtn', 'click', function() {
+        if (el('successModal')) el('successModal').classList.remove('active');
+        openTasksHome();
+      });
+
+      bind('withdrawAvailableBtn', 'click', function() {
+        if (Number(balance || 0) <= 0) return;
+        updateState();
+        showScreen('profileScreen');
+      });
+
+      bind('introWithdrawBtn', 'click', function() {
+        if (Number(balance || 0) <= 0) return;
+        updateState();
+        showScreen('profileScreen');
+      });
+
+      bind('navTasksBtn', 'click', openTasksHome);
+
+      bind('navTopBtn', 'click', function() {
+        updateState();
+        showScreen('topScreen');
+      });
+
+      bind('navProfileBtn', 'click', function() {
+        updateState();
+        showScreen('profileScreen');
+      });
+
+      bind('balanceManageBtn', 'click', function() {
+        openTasksHome();
+        haptic('light');
+      });
+
+      bind('withdrawBackBtn', 'click', function() {
+        pendingWithdrawAmount = 0;
+        pendingWithdrawMethod = '';
+        pendingWithdrawLast4 = '';
+        pendingWithdrawMasked = '';
+        updateState();
+        showScreen('profileScreen');
+      });
+
+      bind('withdrawInput', 'input', function() {
+        applyWithdrawMask();
+        saveCurrentPaymentDraft();
+      });
+
+      bind('confirmWithdrawBtn', 'click', function() {
+        var input = el('withdrawInput');
+        var got = digits(input ? input.value : '');
+        var need = activeMethod ? activeMethod.max : 0;
+
+        if (Number(balance || 0) <= 0) {
+          setText('withdrawInputHint', 'Нет доступных средств для вывода.');
+          restartAnimation(el('withdrawForm'), 'attention');
+          haptic('error');
+          return;
+        }
+
+        if (!activeMethod) {
+          setText('withdrawInputHint', 'Сначала выберите способ получения.');
+          restartAnimation(el('withdrawForm'), 'attention');
+          haptic('error');
+          return;
+        }
+
+        if (got.length !== need) {
+          setText('withdrawInputHint', 'Введите ровно ' + need + ' цифр. Сейчас введено: ' + got.length + '.');
+          restartAnimation(el('withdrawForm'), 'attention');
+          haptic('error');
+          return;
+        }
+
+        pendingWithdrawAmount = Number(balance || 0);
+        pendingWithdrawMethod = activeMethod.name;
+        pendingWithdrawLast4 = got.slice(-4);
+        pendingWithdrawMasked = maskedRequisites(input.value, activeMethod);
+
+        setText('confirmAmount', pendingWithdrawAmount + ' ₽');
+        setText('confirmMethod', pendingWithdrawMethod);
+        setText('confirmDetails', pendingWithdrawMasked);
+
+        if (el('withdrawMainState')) el('withdrawMainState').style.display = 'none';
+        if (el('withdrawConfirmState')) el('withdrawConfirmState').style.display = '';
+        window.scrollTo(0, 0);
+        haptic('selection');
+      });
+
+      function returnToWithdrawForm() {
+        if (el('withdrawConfirmState')) el('withdrawConfirmState').style.display = 'none';
+        if (el('withdrawMainState')) el('withdrawMainState').style.display = '';
+        window.scrollTo(0, 0);
+      }
+
+      bind('confirmBackBtn', 'click', returnToWithdrawForm);
+      bind('changeWithdrawBtn', 'click', returnToWithdrawForm);
+
+      bind('proceedWithdrawBtn', 'click', function() {
+        if (!pendingWithdrawAmount || !pendingWithdrawMethod) {
+          returnToWithdrawForm();
+          return;
+        }
+
+        if (el('withdrawConfirmState')) el('withdrawConfirmState').style.display = 'none';
+        if (el('transactionState')) el('transactionState').style.display = 'flex';
+        haptic('light');
+
+        setTimeout(function() {
+          if (el('transactionState')) el('transactionState').style.display = 'none';
+          showScreen('channelsScreen');
+        }, 1600);
+      });
+
+      bind('finishBtn', 'click', function() {
+        updateState();
+        showScreen('profileScreen');
+      });
+
+      function closeWithdrawDetails() {
+        var modal = el('withdrawDetailsModal');
+        if (modal) modal.classList.remove('active');
+      }
+
+      bind('closeWithdrawDetailsBtn', 'click', closeWithdrawDetails);
+      bind('closeWithdrawDetailsBottomBtn', 'click', closeWithdrawDetails);
+
+      bind('withdrawDetailsModal', 'click', function(event) {
+        if (event.target === el('withdrawDetailsModal')) closeWithdrawDetails();
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && el('withdrawDetailsModal') && el('withdrawDetailsModal').classList.contains('active')) {
+          closeWithdrawDetails();
+        }
+      });
+
+      var nowDate = new Date();
+      var currentDate = el('currentDate');
+
+      if (currentDate) {
+        currentDate.textContent = nowDate.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+      }
+
+      var todayTitle = el('todayTasksTitle');
+      if (todayTitle) {
+        var dd = String(nowDate.getDate()).padStart(2, '0');
+        var mm = String(nowDate.getMonth() + 1).padStart(2, '0');
+        var yy = String(nowDate.getFullYear()).slice(-2);
+        todayTitle.textContent = 'Задания на ' + dd + '.' + mm + '.' + yy;
+      }
+
+      var reviewInputLive = el('reviewText');
+      if (reviewInputLive) {
+        reviewInputLive.removeEventListener('input', handleReviewInput);
+        reviewInputLive.addEventListener('input', handleReviewInput);
+        reviewInputLive.removeEventListener('focus', handleReviewFocus);
+        reviewInputLive.addEventListener('focus', handleReviewFocus);
+      }
+
+      setupKeyboardDismiss();
+      setupBottomNavKeyboardBehavior();
+
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) refreshDailyContentIfNeeded();
+      });
+      window.addEventListener('focus', refreshDailyContentIfNeeded);
+
+      restoreAppState();
+
+      renderTop();
+      renderIntroTasks();
+      renderTasks();
+      renderStars();
+      renderPayMethods();
+      renderWithdrawHistory();
+      renderWithdrawPreview();
+      updateState();
+      showScreen('introScreen');
+    })();
+  </script>
+
+
+</body></html>
