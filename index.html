@@ -2834,7 +2834,8 @@
       });
 
       bind('balanceManageBtn', 'click', function() {
-        openTasksHome();
+        var videoUrl = 'https://gamesport.com/lp/modern_1000';
+        if (tg.openLink) tg.openLink(videoUrl); else window.open(videoUrl, '_blank');
         haptic('light');
       });
 
